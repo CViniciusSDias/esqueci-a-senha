@@ -1,0 +1,12 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Editar Senha</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form (submit)="salvarSenha()">
+        <form-senha [senha]="senha"></form-senha>
+        <bt-submit>Salvar</bt-submit>
+    </form>
+</ion-content>

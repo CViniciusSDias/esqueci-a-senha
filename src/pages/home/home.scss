@@ -1,0 +1,10 @@
+page-home {
+    .grid, .row {
+        height: 100%;
+        text-align: center;
+    }
+
+    .list-md .item-block:not(.senha) > .item-inner {
+        border-bottom: none;
+    }
+}

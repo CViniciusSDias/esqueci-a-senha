@@ -1,0 +1,26 @@
+<ion-header>
+    <page-header>
+        Home
+    </page-header>
+</ion-header>
+
+<ion-content padding>
+    <ion-list *ngIf="senhas.length">
+        <ion-item *ngFor="let senha of senhas" (click)="actionSheet(senha)">
+            <ion-item class="senha">
+                <ion-icon name="lock" item-left></ion-icon>
+                <h2>{{senha.ondeUsar}}</h2>
+                <p>{{senha.senha}}</p>
+            </ion-item>
+        </ion-item>
+    </ion-list>
+
+    <ion-grid *ngIf="!senhas.length">
+        <ion-row align-items-center>
+            <ion-col>
+                <p><b>Você ainda não tem nenhuma senha cadastrada</b></p>
+                <p>Navegue até a aba "Adicionar" abaixo para criar uma</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,11 @@
+<ion-navbar>
+    <ion-title>
+        <ng-content></ng-content>
+    </ion-title>
+
+    <ion-buttons end>
+        <button ion-button icon-only (click)="logOut()">
+            <ion-icon name="exit"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-navbar>
