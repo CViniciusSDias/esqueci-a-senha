@@ -15,13 +15,6 @@ export class SlidesPage {
         }
     }
 
-    public ionViewDidLoad() {
-        if (localStorage.getItem('firstView') == '0') {
-            this.navCtrl.setRoot(LoginPage);
-            return;
-        }
-    }
-
     public continuar() {
         this.navCtrl.setRoot(PerguntaPage);
     }
