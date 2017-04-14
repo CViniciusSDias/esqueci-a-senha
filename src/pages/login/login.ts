@@ -19,14 +19,14 @@ export class LoginPage {
         this.acesso.email = acessoSalvo._email;
     }
 
-    logar(): void {
+    public logar(): void {
         let logado = this.loginService.logar(this.acesso.resposta);
 
-        if (logado) {
-            this.navCtrl.setRoot(TabsPage);
+        if (!logado) {
+            this.toast.showToastWithButton('Dados inválidos', 'Ok');
             return;
         }
 
-        this.toast.showToastWithButton('Dados inválidos', 'Ok');
+        this.navCtrl.setRoot(TabsPage);
     }
 }

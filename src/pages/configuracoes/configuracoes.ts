@@ -8,9 +8,9 @@ import { AlterarDadosPage } from './../alterar-dados/alterar-dados';
 })
 export class ConfiguracoesPage {
 
-    constructor(public navCtrl: NavController) {}
+    constructor(public navCtrl: NavController) { }
 
-    alterarDados() {
+    public alterarDados(): void {
         this.navCtrl.push(AlterarDadosPage);
     }
 }

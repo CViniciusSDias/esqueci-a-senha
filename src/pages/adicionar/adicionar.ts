@@ -18,7 +18,7 @@ export class AdicionarPage {
         private senhaDao: SenhaDao, private toast: ToastFactory
     ) { }
 
-    salvarSenha(): void {
+    public salvarSenha(): void {
         let senha: Senha = this.formSenha.senha;
         if (!senha.estaValida()) {
             this.toast.showToastWithButton('Preencha todos os campos', 'Ok');

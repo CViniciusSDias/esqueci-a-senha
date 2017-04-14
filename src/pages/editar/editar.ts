@@ -17,7 +17,7 @@ export class EditarPage {
         this.senha = navParams.get('senha');
     }
 
-    public salvarSenha() {
+    public salvarSenha(): void {
         this.senhaDao.atualizar(this.senha);
         this.toastCtrl.showToast('Senha editada com sucesso');
         this.navCtrl.pop();

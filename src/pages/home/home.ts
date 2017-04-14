@@ -18,12 +18,12 @@ export class HomePage {
         private alertFactory: AlertFactory
     ) { }
 
-    private buscarSenhas() {
+    private buscarSenhas(): void {
         this.senhaDao.buscarTodas()
             .then(senhas => this.senhas = senhas);
     }
 
-    public remover(senha: Senha) {
+    public remover(senha: Senha): void {
         this.alertFactory.getConfirm(
             'Apagar',
             `Tem certeza que deseja apagar a senha de ${senha.ondeUsar}?`
@@ -34,11 +34,11 @@ export class HomePage {
         }).catch(() => {/*Usuário clicou em 'não'*/});
     }
 
-    public ionViewWillEnter() {
+    public ionViewWillEnter(): void {
         this.buscarSenhas();
     }
 
-    public actionSheet(senha: Senha) {
+    public actionSheet(senha: Senha): void {
         this.actionSheetCtrl.create({
             title: senha.ondeUsar,
             buttons: [

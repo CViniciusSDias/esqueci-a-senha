@@ -14,7 +14,7 @@ export class PerguntaPage {
         this.acesso = new Acesso();
     }
 
-    salvarAcesso() {
+    public salvarAcesso(): void {
         localStorage.setItem('acesso', JSON.stringify(this.acesso));
         localStorage.setItem('firstView', '0');
         this.navCtrl.setRoot(LoginPage);
