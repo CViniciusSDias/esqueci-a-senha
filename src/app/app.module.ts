@@ -10,6 +10,7 @@ import { SlidesPage } from '../pages/slides/slides';
 import { PerguntaPage } from '../pages/pergunta/pergunta';
 import { LoginPage } from '../pages/login/login';
 import { EditarPage } from '../pages/editar/editar';
+import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { SenhaDao } from '../daos/senha.dao';
 import { ConnectionFactory } from '../providers/connection-factory';
 import { StringHelper } from '../providers/string-helper';
@@ -31,6 +32,7 @@ import { Header } from '../components/header/header';
         PerguntaPage,
         LoginPage,
         EditarPage,
+        ConfiguracoesPage,
         FormSenha,
         BtSubmit,
         Header
@@ -50,6 +52,7 @@ import { Header } from '../components/header/header';
         PerguntaPage,
         LoginPage,
         EditarPage,
+        ConfiguracoesPage,
         FormSenha,
         BtSubmit,
         Header
