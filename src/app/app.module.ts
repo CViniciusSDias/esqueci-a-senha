@@ -20,6 +20,7 @@ import { AlertFactory } from '../providers/alert-factory';
 import { FormSenha } from '../components/form-senha/form-senha';
 import { BtSubmit } from '../components/bt-submit/bt-submit';
 import { Header } from '../components/header/header';
+import { FormAcesso } from '../components/form-acesso/form-acesso';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { Header } from '../components/header/header';
         ConfiguracoesPage,
         FormSenha,
         BtSubmit,
-        Header
+        Header,
+        FormAcesso
     ],
     imports: [
         IonicModule.forRoot(MyApp),
@@ -55,7 +57,8 @@ import { Header } from '../components/header/header';
         ConfiguracoesPage,
         FormSenha,
         BtSubmit,
-        Header
+        Header,
+        FormAcesso
     ],
     providers: [
         { provide: ErrorHandler, useClass: IonicErrorHandler },

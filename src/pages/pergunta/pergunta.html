@@ -7,22 +7,7 @@
 
 <ion-content padding>
     <form (ngSubmit)="salvarAcesso()">
-        <ion-list>
-            <ion-item>
-                <ion-label floating>Pergunta</ion-label>
-                <ion-input type="text" [(ngModel)]="acesso.pergunta" required name="pergunta"></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label floating>Resposta</ion-label>
-                <ion-input type="text" [(ngModel)]="acesso.resposta" required name="resposta"></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label floating>E-mail</ion-label>
-                <ion-input type="email" [(ngModel)]="acesso.email" required name="email"></ion-input>
-            </ion-item>
-        </ion-list>
+        <form-acesso [acesso]="acesso"></form-acesso>
 
         <bt-submit>Salvar</bt-submit>
     </form>
