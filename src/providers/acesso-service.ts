@@ -7,6 +7,10 @@ export class AcessoService {
         return localStorage.getItem('firstView') === '0';
     }
 
+    public setPrimeiroAcesso(primeiroAcesso: boolean) {
+        localStorage.setItem('firstView', primeiroAcesso ? '1' : '0');
+    }
+
     public buscarDados(): Acesso {
         let acessoSalvo: any = JSON.parse(localStorage.getItem('acesso'));
         if (acessoSalvo === null) {
