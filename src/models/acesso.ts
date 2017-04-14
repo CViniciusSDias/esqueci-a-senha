@@ -17,6 +17,7 @@ export class Acesso {
     public estaValido(): boolean {
         return !StringHelper.empty(this._pergunta)
             && !StringHelper.empty(this._resposta)
-            && !StringHelper.empty(this._email);
+            && !StringHelper.empty(this._email)
+            && StringHelper.isEmail(this._email);
     }
 }
