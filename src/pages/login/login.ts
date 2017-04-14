@@ -42,12 +42,10 @@ export class LoginPage {
         loading.present();
         this.recuperacaoService.recuperarResposta()
             .subscribe(resposta => {
-                console.log(resposta.json());
                 this.toast.showToastWithButton('Resposta enviada por e-mail', 'Ok');
                 loading.dismiss();
             }, erro => {
-                console.log(erro);
-                this.toast.showToastWithButton(erro.mensagem, 'Ok');
+                this.toast.showToastWithButton(erro.json().mensagem, 'Ok');
                 loading.dismiss();
             });
     }
