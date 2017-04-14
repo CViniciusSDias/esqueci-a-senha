@@ -23,6 +23,10 @@ export class AlterarDadosPage {
     }
 
     public salvarDados(): void {
+        if (!this.acesso.estaValido()) {
+            this.toastFactory.showToastWithButton('Erro. Verifique os dados digitados', 'Ok');
+            return;
+        }
         this.acessoService.salvar(this.acesso);
         this.toastFactory.showToast('Dados alterados com sucesso');
         this.navCtrl.pop();
