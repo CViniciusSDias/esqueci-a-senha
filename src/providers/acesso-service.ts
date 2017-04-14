@@ -4,7 +4,8 @@ import { Acesso } from './../models/acesso';
 @Injectable()
 export class AcessoService {
     public primeiroAcesso(): boolean {
-        return localStorage.getItem('firstView') === '0';
+        let firstView: any = localStorage.getItem('firstView');
+        return firstView === null || firstView === '0';
     }
 
     public setPrimeiroAcesso(primeiroAcesso: boolean) {
