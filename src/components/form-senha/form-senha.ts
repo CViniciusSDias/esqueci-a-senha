@@ -8,8 +8,4 @@ import { Senha } from './../../models/senha';
 export class FormSenha {
     @Input()
     public senha: Senha;
-
-    public constructor() {
-        this.senha = new Senha();
-    }
 }

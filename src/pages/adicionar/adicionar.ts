@@ -1,22 +1,22 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SenhaDao } from '../../daos/senha.dao';
 import { Senha } from '../../models/senha';
 import { ToastFactory } from '../../providers/toast-factory';
-import { FormSenha } from './../../components/form-senha/form-senha';
 
 @Component({
     selector: 'page-adicionar',
     templateUrl: 'adicionar.html'
 })
 export class AdicionarPage {
-    @ViewChild(FormSenha)
-    private formSenha: FormSenha;
+    private senha: Senha;
 
-    constructor(public navCtrl: NavController, private senhaDao: SenhaDao, private toast: ToastFactory) { }
+    constructor(public navCtrl: NavController, private senhaDao: SenhaDao, private toast: ToastFactory) {
+        this.senha = new Senha();
+    }
 
     public salvarSenha(): void {
-        let senha: Senha = this.formSenha.senha;
+        let senha: Senha = this.senha;
         if (!senha.estaValida()) {
             this.toast.showToastWithButton('Preencha todos os campos', 'Ok');
             return;
@@ -24,6 +24,6 @@ export class AdicionarPage {
 
         this.senhaDao.inserir(senha);
         this.toast.showToast('Senha cadastrada com sucesso');
-        this.formSenha.senha = new Senha();
+        this.senha = new Senha();
     }
 }
