@@ -2,9 +2,7 @@
 namespace EsqueciASenha\Controller;
 
 use EsqueciASenha\Services\EmailResposta;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response, JsonResponse};
 
 class RespostaController extends AbstractController
 {
