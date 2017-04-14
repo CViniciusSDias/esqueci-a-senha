@@ -1,0 +1,12 @@
+{
+    "require": {
+        "silex/silex": "^2.0",
+        "phpmailer/phpmailer": "^5.2",
+        "cviniciussdias/dependency-resolver": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EsqueciASenha\\": "src/"
+        }
+    }
+}
