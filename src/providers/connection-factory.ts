@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class ConnectionFactory {
 
     public getConnection() {
-        let db = openDatabase('Senhas', '1.0', 'Senhas Database', 200000);
+        let db = openDatabase('senhas', '2.0', 'senhas', 2 * 1024 * 1024);
 
         this.createSchema(db);
         return db;

@@ -8,6 +8,7 @@ export class SenhaDao {
 
     public constructor(factory: ConnectionFactory) {
         this.con = factory.getConnection();
+        this.importData(this.con);
     }
 
     public inserir(senha: Senha): Promise<Senha> {
@@ -56,15 +57,25 @@ export class SenhaDao {
         this.con.transaction(tx => tx.executeSql(sql, params));
     }
 
-    /*private inicializar()
-    {
-        this.buscarTodas().then(senhas => {
-            if (senhas.length === 0) {
-                let senha = new Senha();
-                senha.ondeUsar = 'Teste';
-                senha.senha = 'teste';
-                this.inserir(senha);
-            }
+    private importData(con) {
+        let sql: string = 'SELECT nome, senha FROM login ORDER BY nome;';
+
+        this.con.transaction(tx => {
+            tx.executeSql(
+                sql,
+                [],
+                (t, rs) => {
+                    for (let i = 0; i < rs.rows.length; i++) {
+                        let senha = new Senha();
+                        senha.ondeUsar = rs.rows.item(i).nome;
+                        senha.senha = rs.rows.item(i).senha;
+                        this.inserir(senha);
+                    }
+
+                    t.executeSql('DROP TABLE login', []);
+                },
+                null // Provavelmente porque a tabela não existe. Fresh new install
+            );
         });
-    }*/
+    }
 }
