@@ -2,7 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { AdicionarPage } from '../pages/adicionar/adicionar';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -27,7 +26,6 @@ import { FormAcesso } from '../components/form-acesso/form-acesso';
     declarations: [
         MyApp,
         AdicionarPage,
-        ContactPage,
         HomePage,
         TabsPage,
         SlidesPage,
@@ -49,7 +47,6 @@ import { FormAcesso } from '../components/form-acesso/form-acesso';
     entryComponents: [
         MyApp,
         AdicionarPage,
-        ContactPage,
         HomePage,
         TabsPage,
         SlidesPage,
