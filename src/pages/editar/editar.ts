@@ -20,5 +20,6 @@ export class EditarPage {
     public salvarSenha() {
         this.senhaDao.atualizar(this.senha);
         this.toastCtrl.showToast('Senha editada com sucesso');
+        this.navCtrl.pop();
     }
 }
