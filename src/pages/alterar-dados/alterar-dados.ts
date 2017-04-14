@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Acesso } from './../../models/acesso';
 import { ToastFactory } from './../../providers/toast-factory';
+import { AcessoService } from './../../providers/acesso-service';
 
 @Component({
     selector: 'page-alterar-dados',
@@ -10,20 +11,19 @@ import { ToastFactory } from './../../providers/toast-factory';
 export class AlterarDadosPage {
     private acesso: Acesso;
 
-    constructor(public navCtrl: NavController, private toastFactory: ToastFactory) {
+    constructor(
+        public navCtrl: NavController, private toastFactory: ToastFactory,
+        private acessoService: AcessoService
+    ) {
         this.carregarDados();
     }
 
     public carregarDados(): void {
-        let acesso: any = JSON.parse(localStorage.getItem('acesso'));
-        this.acesso = new Acesso();
-        this.acesso.pergunta = acesso._pergunta;
-        this.acesso.resposta = acesso._resposta;
-        this.acesso.email = acesso._email;
+        this.acesso = this.acessoService.buscarDados();
     }
 
     public salvarDados(): void {
-        localStorage.setItem('acesso', JSON.stringify(this.acesso));
+        this.acessoService.salvar(this.acesso);
         this.toastFactory.showToast('Dados alterados com sucesso');
         this.navCtrl.pop();
     }

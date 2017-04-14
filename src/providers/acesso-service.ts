@@ -5,7 +5,7 @@ import { Acesso } from './../models/acesso';
 export class AcessoService {
     public primeiroAcesso(): boolean {
         let firstView: any = localStorage.getItem('firstView');
-        return firstView === null || firstView === '0';
+        return firstView === null || firstView === '1';
     }
 
     public setPrimeiroAcesso(primeiroAcesso: boolean) {

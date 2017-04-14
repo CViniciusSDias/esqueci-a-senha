@@ -8,11 +8,7 @@ import { PerguntaPage } from './../pergunta/pergunta';
 })
 export class SlidesPage {
 
-    constructor(public navCtrl: NavController) {
-        if (localStorage.getItem('firstView') === null) {
-            localStorage.setItem('firstView', '1');
-        }
-    }
+    constructor(public navCtrl: NavController) { }
 
     public continuar() {
         this.navCtrl.setRoot(PerguntaPage);

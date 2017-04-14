@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { SlidesPage } from '../pages/slides/slides';
-import { LoginPage } from '../pages/login/login';
+import { SlidesPage } from './../pages/slides/slides';
+import { LoginPage } from './../pages/login/login';
+import { AcessoService } from './../providers/acesso-service';
 
 @Component({
     templateUrl: 'app.html'
@@ -9,9 +10,9 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
     public rootPage;
 
-    constructor(platform: Platform) {
+    constructor(platform: Platform, acessoService: AcessoService) {
         platform.ready().then(() => {
-            if (localStorage.getItem('firstView') === '0') {
+            if (!acessoService.primeiroAcesso()) {
                 this.rootPage = LoginPage;
                 return;
             }

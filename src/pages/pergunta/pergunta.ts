@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Acesso } from './../../models/acesso';
 import { LoginPage } from './../login/login';
+import { AcessoService } from './../../providers/acesso-service';
 
 @Component({
     selector: 'page-pergunta',
@@ -10,13 +11,13 @@ import { LoginPage } from './../login/login';
 export class PerguntaPage {
     private acesso: Acesso;
 
-    constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController, private acessoService: AcessoService) {
         this.acesso = new Acesso();
     }
 
     public salvarAcesso(): void {
-        localStorage.setItem('acesso', JSON.stringify(this.acesso));
-        localStorage.setItem('firstView', '0');
+        this.acessoService.salvar(this.acesso);
+        this.acessoService.setPrimeiroAcesso(false);
         this.navCtrl.setRoot(LoginPage);
     }
 }

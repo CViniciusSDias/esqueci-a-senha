@@ -4,6 +4,7 @@ import { Login } from './../../providers/login';
 import { Acesso } from './../../models/acesso';
 import { TabsPage } from './../tabs/tabs';
 import { ToastFactory } from '../../providers/toast-factory';
+import { AcessoService } from '../../providers/acesso-service';
 
 @Component({
   selector: 'page-login',
@@ -12,11 +13,13 @@ import { ToastFactory } from '../../providers/toast-factory';
 export class LoginPage {
     private acesso: Acesso;
 
-    constructor(public navCtrl: NavController, private loginService: Login, private toast: ToastFactory) {
-        let acessoSalvo: any = JSON.parse(localStorage.getItem('acesso'));
+    constructor(
+        public navCtrl: NavController, private loginService: Login,
+        private toast: ToastFactory, private acessoService: AcessoService
+    ) {
+        let acesso = acessoService.buscarDados();
         this.acesso = new Acesso();
-        this.acesso.pergunta = acessoSalvo._pergunta;
-        this.acesso.email = acessoSalvo._email;
+        this.acesso.pergunta = acesso.pergunta;
     }
 
     public logar(): void {

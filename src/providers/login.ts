@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
+import { AcessoService } from './acesso-service';
 
 @Injectable()
 export class Login {
 
-    public logar(resposta: string): boolean {
-        let acesso: any = JSON.parse(localStorage.getItem('acesso'));
-        if (acesso === null) {
-            return false;
-        }
+    public constructor(private acessoService: AcessoService) {}
 
-        return acesso._resposta === resposta;
+    public logar(resposta: string): boolean {
+        let acesso = this.acessoService.buscarDados();
+
+        return acesso.resposta === resposta;
     }
 }
