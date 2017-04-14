@@ -10,6 +10,7 @@ import { SlidesPage } from '../pages/slides/slides';
 import { PerguntaPage } from '../pages/pergunta/pergunta';
 import { LoginPage } from '../pages/login/login';
 import { EditarPage } from '../pages/editar/editar';
+import { AlterarDadosPage } from '../pages/alterar-dados/alterar-dados';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { SenhaDao } from '../daos/senha.dao';
 import { ConnectionFactory } from '../providers/connection-factory';
@@ -33,6 +34,7 @@ import { FormAcesso } from '../components/form-acesso/form-acesso';
         PerguntaPage,
         LoginPage,
         EditarPage,
+        AlterarDadosPage,
         ConfiguracoesPage,
         FormSenha,
         BtSubmit,
@@ -54,6 +56,7 @@ import { FormAcesso } from '../components/form-acesso/form-acesso';
         PerguntaPage,
         LoginPage,
         EditarPage,
+        AlterarDadosPage,
         ConfiguracoesPage,
         FormSenha,
         BtSubmit,
