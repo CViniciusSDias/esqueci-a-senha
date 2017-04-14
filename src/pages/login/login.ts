@@ -45,7 +45,10 @@ export class LoginPage {
                 this.toast.showToastWithButton('Resposta enviada por e-mail', 'Ok');
                 loading.dismiss();
             }, erro => {
-                this.toast.showToastWithButton(erro.json().mensagem, 'Ok');
+                let mensagem: string = erro.json().hasOwnProperty('mensagem')
+                    ? erro.json().mensagem
+                    : 'Erro ao se conectar com o servidor';
+                this.toast.showToastWithButton(mensagem, 'Ok');
                 loading.dismiss();
             });
     }
