@@ -8,7 +8,10 @@ export class SenhaDao {
 
     public constructor(factory: ConnectionFactory) {
         this.con = factory.getConnection();
-        this.importData(this.con);
+
+        if (localStorage.getItem('imported') === null) {
+            this.importData(this.con);
+        }
     }
 
     public inserir(senha: Senha): Promise<Senha> {
@@ -77,5 +80,7 @@ export class SenhaDao {
                 null // Provavelmente porque a tabela não existe. Fresh new install
             );
         });
+
+        localStorage.setItem('imported', '1');
     }
 }
