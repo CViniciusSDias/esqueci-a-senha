@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { SenhaDao } from '../../daos/senha.dao';
 import { Senha } from '../../models/senha';
 import { ToastFactory } from '../../providers/toast-factory';
@@ -13,10 +13,7 @@ export class AdicionarPage {
     @ViewChild(FormSenha)
     private formSenha: FormSenha;
 
-    constructor(
-        public navCtrl: NavController, public navParams: NavParams,
-        private senhaDao: SenhaDao, private toast: ToastFactory
-    ) { }
+    constructor(public navCtrl: NavController, private senhaDao: SenhaDao, private toast: ToastFactory) { }
 
     public salvarSenha(): void {
         let senha: Senha = this.formSenha.senha;
