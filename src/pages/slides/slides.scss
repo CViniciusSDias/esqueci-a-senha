@@ -1,6 +1,12 @@
 page-slides {
-    .slide-image {
+    ion-slide:last-child .slide-image {
         max-width: 60%;
+    }
+
+    .slide-image {
+        width: 100%;
+        height: 100%;
+        max-width: 50%;
         max-height: 50%;
         margin: 1.5rem 0;
     }
