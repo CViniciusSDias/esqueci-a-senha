@@ -23,7 +23,7 @@ export class AdicionarPage {
         }
 
         this.senhaDao.inserir(senha);
-        this.toast.showToast('Senha cadastrada com sucesso');
+        this.toast.showToastWithButton('Senha cadastrada com sucesso', 'Ok', 2000);
         this.senha = new Senha();
     }
 }
