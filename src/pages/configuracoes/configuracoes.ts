@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlterarDadosPage } from './../alterar-dados/alterar-dados';
+import { SobrePage } from './../sobre/sobre';
 
 @Component({
     selector: 'page-configuracoes',
@@ -12,5 +13,9 @@ export class ConfiguracoesPage {
 
     public alterarDados(): void {
         this.navCtrl.push(AlterarDadosPage);
+    }
+
+    public sobre(): void {
+        this.navCtrl.push(SobrePage);
     }
 }

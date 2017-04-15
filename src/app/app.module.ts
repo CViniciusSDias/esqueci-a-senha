@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { EditarPage } from '../pages/editar/editar';
 import { AlterarDadosPage } from '../pages/alterar-dados/alterar-dados';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
+import { SobrePage } from '../pages/sobre/sobre';
 import { SenhaDao } from '../daos/senha.dao';
 import { ConnectionFactory } from '../providers/connection-factory';
 import { StringHelper } from '../providers/string-helper';
@@ -36,6 +37,7 @@ import { FormAcesso } from '../components/form-acesso/form-acesso';
         EditarPage,
         AlterarDadosPage,
         ConfiguracoesPage,
+        SobrePage,
         FormSenha,
         BtSubmit,
         Header,
@@ -57,6 +59,7 @@ import { FormAcesso } from '../components/form-acesso/form-acesso';
         EditarPage,
         AlterarDadosPage,
         ConfiguracoesPage,
+        SobrePage,
         FormSenha,
         BtSubmit,
         Header,
