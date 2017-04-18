@@ -13,13 +13,13 @@ export class MyApp {
 
     constructor(platform: Platform, acessoService: AcessoService) {
         platform.ready().then(() => {
+            Splashscreen.hide();
             if (!acessoService.primeiroAcesso()) {
                 this.rootPage = LoginPage;
                 return;
             }
 
             this.rootPage = SlidesPage;
-            Splashscreen.hide();
         });
     }
 }
