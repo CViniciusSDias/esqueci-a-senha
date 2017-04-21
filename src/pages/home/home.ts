@@ -30,7 +30,7 @@ export class HomePage {
         ).then(() => {
             this.senhas.splice(this.senhas.indexOf(senha), 1);
             this.senhaDao.remover(senha);
-            this.toast.showToast('Senha removida com sucesso');
+            this.toast.showToastWithButton('Senha removida com sucesso', 'Ok');
         }).catch(() => {/*Usuário clicou em 'não'*/});
     }
 
