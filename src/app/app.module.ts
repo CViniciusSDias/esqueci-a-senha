@@ -59,11 +59,7 @@ import { FormAcesso } from '../components/form-acesso/form-acesso';
         EditarPage,
         AlterarDadosPage,
         ConfiguracoesPage,
-        SobrePage,
-        FormSenha,
-        BtSubmit,
-        Header,
-        FormAcesso
+        SobrePage
     ],
     providers: [
         { provide: ErrorHandler, useClass: IonicErrorHandler },
