@@ -7,12 +7,10 @@
 <ion-content padding>
 
     <form (submit)="logar()">
-        <ion-list>
-            <ion-item>
-                <ion-label floating>{{acesso.pergunta}}</ion-label>
-                <ion-input type="text" [(ngModel)]="acesso.resposta" name="resposta" required></ion-input>
-            </ion-item>
-        </ion-list>
+        <ion-item>
+            <ion-label floating>{{acesso.pergunta}}</ion-label>
+            <ion-input type="text" [(ngModel)]="acesso.resposta" name="resposta" required></ion-input>
+        </ion-item>
 
         <div padding>
             <button ion-button color="primary" block type="submit">
