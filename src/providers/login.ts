@@ -9,6 +9,6 @@ export class Login {
     public logar(resposta: string): boolean {
         let acesso = this.acessoService.buscarDados();
 
-        return acesso.resposta === resposta;
+        return acesso.resposta.toLowerCase() === resposta.toLowerCase();
     }
 }
