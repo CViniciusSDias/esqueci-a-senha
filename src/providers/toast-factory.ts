@@ -6,7 +6,7 @@ export class ToastFactory {
 
     constructor(public toastCtrl: ToastController) { }
 
-    public showToastWithButton(message: string, closeButtonText: string, duration: number = 10000) {
+    public showToastWithButton(message: string, closeButtonText: string, duration: number = 5000) {
         let showCloseButton = true;
         this.toastCtrl.create({message, showCloseButton, closeButtonText, duration}).present();
     }
