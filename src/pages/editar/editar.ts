@@ -19,7 +19,7 @@ export class EditarPage {
 
     public salvarSenha(): void {
         this.senhaDao.atualizar(this.senha);
-        this.toastCtrl.showToast('Senha editada com sucesso');
+        this.toastCtrl.showToastWithButton('Senha editada com sucesso', 'Ok');
         this.navCtrl.pop();
     }
 }
