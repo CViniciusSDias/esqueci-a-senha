@@ -8,7 +8,7 @@ export class StringHelper {
     }
 
     public static isEmail(email: string): boolean {
-        let regex = new RegExp(/^[a-z0-9]+@[a-z0-9]+\.[a-z0-9]{2,}/);
+        let regex = new RegExp(/^[a-z0-9\.\-_]+@[a-z0-9]+\.[a-z0-9]{2,}/);
 
         return regex.test(email);
     }
