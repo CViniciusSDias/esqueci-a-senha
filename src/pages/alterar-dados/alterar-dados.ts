@@ -28,7 +28,7 @@ export class AlterarDadosPage {
             return;
         }
         this.acessoService.salvar(this.acesso);
-        this.toastFactory.showToast('Dados alterados com sucesso');
+        this.toastFactory.showToast('Dados alterados com sucesso', 2000, 'top');
         this.navCtrl.pop();
     }
 }
