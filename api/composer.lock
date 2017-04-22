@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "cviniciussdias/dependency-resolver",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CViniciusSDias/dependency-resolver.git",
-                "reference": "e11edbb88e8a93cdbece14de16eca684bd23850e"
+                "reference": "df48dd02cf1c4af6d62218577c7da05954379471"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CViniciusSDias/dependency-resolver/zipball/e11edbb88e8a93cdbece14de16eca684bd23850e",
-                "reference": "e11edbb88e8a93cdbece14de16eca684bd23850e",
+                "url": "https://api.github.com/repos/CViniciusSDias/dependency-resolver/zipball/df48dd02cf1c4af6d62218577c7da05954379471",
+                "reference": "df48dd02cf1c4af6d62218577c7da05954379471",
                 "shasum": ""
             },
             "type": "library",
@@ -38,7 +38,7 @@
                 }
             ],
             "description": "Dependency Resolver. A simple component to resolve classes dependencies and instantiate them automagically.",
-            "time": "2017-02-15 17:30:03"
+            "time": "2017-04-22 23:05:25"
         },
         {
             "name": "phpmailer/phpmailer",
