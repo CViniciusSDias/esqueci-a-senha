@@ -8,5 +8,8 @@
         "psr-4": {
             "EsqueciASenha\\": "src/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
     }
 }

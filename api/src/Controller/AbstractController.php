@@ -5,7 +5,7 @@ use CViniciusSDias\DependencyResolver\Resolver;
 
 abstract class AbstractController
 {
-    protected $resolver;
+    private $resolver;
 
     public function __construct()
     {
