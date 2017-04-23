@@ -18,6 +18,10 @@ export class EditarPage {
     }
 
     public salvarSenha(): void {
+        if (!this.senha.estaValida()) {
+            this.toastCtrl.showToastWithButton('Preencha todos os campos', 'Ok');
+            return;
+        }
         this.senhaDao.atualizar(this.senha);
         this.toastCtrl.showToastWithButton('Senha editada com sucesso', 'Ok');
         this.navCtrl.pop();
