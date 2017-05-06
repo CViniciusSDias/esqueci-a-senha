@@ -22,6 +22,7 @@ export class HomePage {
         let loading = this.loadingCtrl.create({
             content: 'Carregando'
         });
+        loading.present();
         this.senhaDao.buscarTodas()
             .then(senhas => {
                 this.senhas = senhas;
