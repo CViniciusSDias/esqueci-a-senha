@@ -1,0 +1,4 @@
+2.0.1
+  - Mensagem de 'Carregando' ao buscar senhas (Tela: home)
+  - Botão 'Recuperar Resposta' renomeado para 'Esqueci a Resposta' (Tela: login)
+  - Ao cadastrar uma nova senha, os inputs não ficam mais em vermelho, aparentando um erro (Tela: adicionar)
