@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { Senha } from './../../models/senha';
 import { SenhaDao } from './../../daos/senha.dao';
 import { ToastFactory } from './../../providers/toast-factory';
@@ -15,12 +15,18 @@ export class HomePage {
 
     constructor(public navCtrl: NavController, public senhaDao: SenhaDao,
         private toast: ToastFactory, private actionSheetCtrl: ActionSheetController,
-        private alertFactory: AlertFactory
+        private alertFactory: AlertFactory, private loadingCtrl: LoadingController
     ) { }
 
     private buscarSenhas(): void {
+        let loading = this.loadingCtrl.create({
+            content: 'Carregando'
+        });
         this.senhaDao.buscarTodas()
-            .then(senhas => this.senhas = senhas);
+            .then(senhas => {
+                this.senhas = senhas;
+                loading.dismiss();
+            });
     }
 
     public remover(senha: Senha): void {
