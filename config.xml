@@ -2,14 +2,7 @@
 <widget id="dias.vinicius.esqueciasenha" version="2.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Esqueci a Senha</name>
     <description>
-        Aplicativo perfeito para quem tem dificuldade em se lembrar de senhas.
-        Este aplicativo mantém salvas todas as senhas em seu celular e é protegido
-        por uma pergunta pessoal e secreta, afinal, não faria o menor sentido proteger
-        um aplicativo para quem se esquece de senhas, com uma outra senha, não é mesmo?
-        Você deve cadastrar um email no momento de configuração do aplicativo,
-        para que possa recuperar sua resposta, caso acabe a esquecendo.
-        Suas senhas não ficam salvas na internet, e sim, em seu celular,
-        trazendo assim mais confiança e segurança para o usuário.
+        Aplicativo para armazenar as senhas do usuário no celular, para consultas futuras.
     </description>
     <author email="carlosv775@gmail.com" href="http://github.com/CViniciusSDias/">Vinicius Dias</author>
 
