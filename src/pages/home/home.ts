@@ -22,12 +22,14 @@ export class HomePage {
         let loading = this.loadingCtrl.create({
             content: 'Carregando'
         });
-        loading.present();
-        this.senhaDao.buscarTodas()
-            .then(senhas => {
-                this.senhas = senhas;
-                loading.dismiss();
-            });
+
+        loading.present().then(() => {
+            this.senhaDao.buscarTodas()
+                .then(senhas => {
+                    this.senhas = senhas;
+                    loading.dismiss();
+                });
+        });
     }
 
     public remover(senha: Senha): void {
