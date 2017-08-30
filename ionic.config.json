@@ -1,6 +1,8 @@
 {
-    "name": "esqueci-a-senha",
-    "app_id": "",
-    "v2": true,
-    "typescript": true
+  "name": "esqueci-a-senha",
+  "app_id": "",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
 }

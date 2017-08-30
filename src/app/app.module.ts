@@ -1,5 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -24,6 +26,7 @@ import { FormSenha } from '../components/form-senha/form-senha';
 import { BtSubmit } from '../components/bt-submit/bt-submit';
 import { Header } from '../components/header/header';
 import { FormAcesso } from '../components/form-acesso/form-acesso';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @NgModule({
     declarations: [
@@ -45,7 +48,9 @@ import { FormAcesso } from '../components/form-acesso/form-acesso';
     ],
     imports: [
         IonicModule.forRoot(MyApp),
-        FormsModule
+        FormsModule,
+        BrowserModule,
+        HttpModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -70,7 +75,8 @@ import { FormAcesso } from '../components/form-acesso/form-acesso';
         Login,
         AlertFactory,
         AcessoService,
-        RecuperacaoService
+        RecuperacaoService,
+        SplashScreen
     ]
 })
 export class AppModule {}

@@ -8,7 +8,7 @@
     <ion-list *ngIf="senhas.length">
         <ion-item *ngFor="let senha of senhas" (click)="actionSheet(senha)">
             <ion-item class="senha">
-                <ion-icon name="lock" item-left></ion-icon>
+                <ion-icon name="lock" item-start></ion-icon>
                 <h2>{{senha.ondeUsar}}</h2>
                 <p>{{senha.senha}}</p>
             </ion-item>
