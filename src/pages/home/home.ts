@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
-import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
+import { NavController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { Senha } from './../../models/senha';
 import { SenhaDao } from './../../daos/senha.dao';
 import { ToastFactory } from './../../providers/toast-factory';
@@ -15,7 +14,7 @@ export class HomePage {
     public senhas: Senha[] = [];
 
     constructor(public navCtrl: NavController, public senhaDao: SenhaDao,
-        private toast: ToastFactory, private actionSheetCtrl: ActionSheet,
+        private toast: ToastFactory, private actionSheetCtrl: ActionSheetController,
         private alertFactory: AlertFactory, private loadingCtrl: LoadingController
     ) { }
 
@@ -49,22 +48,26 @@ export class HomePage {
     }
 
     public actionSheet(senha: Senha): void {
-        let options: ActionSheetOptions = {
+        this.actionSheetCtrl.create({
             title: senha.ondeUsar,
-            buttonLabels: ['Excluir'],
-            addDestructiveButtonWithLabel: 'Editar',
-            addCancelButtonWithLabel: 'Cancelar'
-        };
-
-        this.actionSheetCtrl.show(options).then((buttonIndex: number) => {
-            switch (buttonIndex) {
-                case 0: // Excluir
-                    this.remover(senha);
-                    break;
-                case 1: // Editar
-                    this.navCtrl.push(EditarPage, {senha});
-                    break;
-            }
-        });
+            buttons: [
+                {
+                    text: 'Excluir',
+                    role: 'destructive',
+                    icon: 'trash',
+                    handler: () => { this.remover(senha); }
+                },
+                {
+                    text: 'Editar',
+                    icon: 'create',
+                    handler: () => { this.navCtrl.push(EditarPage, {senha: senha}); }
+                },
+                {
+                    text: 'Cancelar',
+                    role: 'cancel',
+                    icon: 'close'
+                }
+            ]
+        }).present();
     }
 }

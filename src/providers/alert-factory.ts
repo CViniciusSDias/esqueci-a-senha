@@ -6,7 +6,7 @@ export class AlertFactory {
 
     constructor(public alertCtrl: AlertController) { }
 
-    public getConfirm(titulo: string, texto: string): Promise<void> {
+    public getConfirm(titulo: string, texto: string): Promise<any> {
         return new Promise((resolve, reject) => {
             let confirm = this.alertCtrl.create({
                 title: titulo,
@@ -14,11 +14,11 @@ export class AlertFactory {
                 buttons: [
                     {
                         text: 'Não',
-                        handler: () => reject()
+                        handler: () => { reject(); }
                     },
                     {
                         text: 'Sim',
-                        handler: () => resolve()
+                        handler: () => { resolve(); }
                     }
                 ]
             });
