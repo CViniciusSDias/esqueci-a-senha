@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Senha } from './../../models/senha';
 import { SenhaDao } from './../../daos/senha.dao';
 import { ToastFactory } from './../../providers/toast-factory';
+import { FirebaseService } from './../../providers/firebase-service';
 
 @Component({
   selector: 'page-editar',
@@ -12,9 +13,13 @@ export class EditarPage {
     private senha: Senha;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
-        private senhaDao: SenhaDao, private toastCtrl: ToastFactory
+        private senhaDao: SenhaDao, private toastCtrl: ToastFactory, private firebase: FirebaseService
     ) {
         this.senha = navParams.get('senha');
+    }
+    
+    public ionViewDidEnter() {
+        this.firebase.logPageView('editar');
     }
 
     public salvarSenha(): void {

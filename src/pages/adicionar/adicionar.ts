@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { SenhaDao } from '../../daos/senha.dao';
 import { Senha } from '../../models/senha';
 import { ToastFactory } from '../../providers/toast-factory';
+import { FirebaseService } from '../../providers/firebase-service';
 
 @Component({
     selector: 'page-adicionar',
@@ -11,8 +12,14 @@ import { ToastFactory } from '../../providers/toast-factory';
 export class AdicionarPage {
     private senha: Senha;
 
-    constructor(public navCtrl: NavController, private senhaDao: SenhaDao, private toast: ToastFactory) {
+    constructor(public navCtrl: NavController, private senhaDao: SenhaDao,
+        private toast: ToastFactory, private firebase: FirebaseService
+    ) {
         this.senha = new Senha();
+    }
+
+    public ionViewDidEnter() {
+        this.firebase.logPageView('adicionar');
     }
 
     public salvarSenha(): void {

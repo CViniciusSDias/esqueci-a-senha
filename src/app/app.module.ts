@@ -22,11 +22,13 @@ import { Login } from '../providers/login';
 import { AlertFactory } from '../providers/alert-factory';
 import { AcessoService } from '../providers/acesso-service';
 import { RecuperacaoService } from '../providers/recuperacao-service';
+import { FirebaseService } from '../providers/firebase-service';
 import { FormSenha } from '../components/form-senha/form-senha';
 import { BtSubmit } from '../components/bt-submit/bt-submit';
 import { Header } from '../components/header/header';
 import { FormAcesso } from '../components/form-acesso/form-acesso';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
 
 @NgModule({
     declarations: [
@@ -76,7 +78,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         AlertFactory,
         AcessoService,
         RecuperacaoService,
-        SplashScreen
+        FirebaseService,
+        SplashScreen,
+        FirebaseAnalytics
     ]
 })
 export class AppModule {}
