@@ -2,3 +2,8 @@
   - Mensagem de 'Carregando' ao buscar senhas (Tela: home)
   - Botão 'Recuperar Resposta' renomeado para 'Esqueci a Resposta' (Tela: login)
   - Ao cadastrar uma nova senha, os inputs não ficam mais em vermelho, aparentando um erro (Tela: adicionar)
+
+2.0.4
+  - Mensagem de 'Você ainda não tem nenhuma senha cadastrada' só é exibida após buscar as senhas (Tela: home)
+  - Melhorias de estabilidade
+  - Atualizações de bibliotecas atualizadas
