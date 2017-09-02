@@ -22,8 +22,11 @@ export class AdicionarPage {
             return;
         }
 
-        this.senhaDao.inserir(senha);
-        this.toast.showToastWithButton('Senha cadastrada com sucesso', 'Ok', 2000);
-        this.senha = new Senha();
+        this.senhaDao.inserir(senha)
+            .then(senha => {
+                this.toast.showToastWithButton('Senha cadastrada com sucesso', 'Ok', 2000);
+                this.senha = new Senha();
+            })
+            .catch(erro => this.toast.showToastWithButton(erro, 'Ok', 2000));
     }
 }

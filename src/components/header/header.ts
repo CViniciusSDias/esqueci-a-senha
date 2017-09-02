@@ -10,7 +10,7 @@ export class Header {
     public constructor(private app: App, private navCtrl: NavController) {}
 
     public logOut(): void {
-        let root = this.app.getRootNav();
+        let root = this.app.getRootNavs()[0];
         root.setRoot(LoginPage);
     }
 }

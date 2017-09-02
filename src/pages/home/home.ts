@@ -12,6 +12,7 @@ import { EditarPage } from './../../pages/editar/editar';
 })
 export class HomePage {
     public senhas: Senha[] = [];
+    public inicializado: boolean = false;
 
     constructor(public navCtrl: NavController, public senhaDao: SenhaDao,
         private toast: ToastFactory, private actionSheetCtrl: ActionSheetController,
@@ -28,6 +29,7 @@ export class HomePage {
                 .then(senhas => {
                     this.senhas = senhas;
                     loading.dismiss();
+                    this.inicializado = true;
                 });
         });
     }
@@ -55,12 +57,12 @@ export class HomePage {
                     text: 'Excluir',
                     role: 'destructive',
                     icon: 'trash',
-                    handler: () => this.remover(senha)
+                    handler: () => { this.remover(senha); }
                 },
                 {
                     text: 'Editar',
                     icon: 'create',
-                    handler: () => this.navCtrl.push(EditarPage, {senha: senha})
+                    handler: () => { this.navCtrl.push(EditarPage, {senha: senha}); }
                 },
                 {
                     text: 'Cancelar',
