@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Acesso } from './../../models/acesso';
 import { ToastFactory } from './../../providers/toast-factory';
 import { AcessoService } from './../../providers/acesso-service';
+import { FirebaseService } from './../../providers/firebase-service';
 
 @Component({
     selector: 'page-alterar-dados',
@@ -13,9 +14,13 @@ export class AlterarDadosPage {
 
     constructor(
         public navCtrl: NavController, private toastFactory: ToastFactory,
-        private acessoService: AcessoService
+        private acessoService: AcessoService, private firebase: FirebaseService
     ) {
         this.carregarDados();
+    }
+    
+    public ionViewDidEnter() {
+        this.firebase.logPageView('alterar-dados');
     }
 
     public carregarDados(): void {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlterarDadosPage } from './../alterar-dados/alterar-dados';
 import { SobrePage } from './../sobre/sobre';
+import { FirebaseService } from './../../providers/firebase-service';
 
 @Component({
     selector: 'page-configuracoes',
@@ -9,7 +10,11 @@ import { SobrePage } from './../sobre/sobre';
 })
 export class ConfiguracoesPage {
 
-    constructor(public navCtrl: NavController) { }
+    constructor(public navCtrl: NavController, private firebase: FirebaseService) { }
+    
+    public ionViewDidEnter() {
+        this.firebase.logPageView('configuracoes');
+    }
 
     public alterarDados(): void {
         this.navCtrl.push(AlterarDadosPage);

@@ -4,6 +4,7 @@ import { Senha } from './../../models/senha';
 import { SenhaDao } from './../../daos/senha.dao';
 import { ToastFactory } from './../../providers/toast-factory';
 import { AlertFactory } from './../../providers/alert-factory';
+import { FirebaseService } from './../../providers/firebase-service';
 import { EditarPage } from './../../pages/editar/editar';
 
 @Component({
@@ -13,12 +14,21 @@ import { EditarPage } from './../../pages/editar/editar';
 export class HomePage {
     public senhas: Senha[] = [];
     public inicializado: boolean = false;
-
+    
     constructor(public navCtrl: NavController, public senhaDao: SenhaDao,
         private toast: ToastFactory, private actionSheetCtrl: ActionSheetController,
-        private alertFactory: AlertFactory, private loadingCtrl: LoadingController
+        private alertFactory: AlertFactory, private loadingCtrl: LoadingController,
+        private firebase: FirebaseService
     ) { }
 
+    public ionViewWillEnter(): void {
+        this.buscarSenhas();
+    }
+    
+    public ionViewDidEnter() {
+        this.firebase.logPageView('home');
+    }
+    
     private buscarSenhas(): void {
         let loading = this.loadingCtrl.create({
             content: 'Carregando'
@@ -43,10 +53,6 @@ export class HomePage {
             this.senhaDao.remover(senha);
             this.toast.showToastWithButton('Senha removida com sucesso', 'Ok');
         }).catch(() => {/*Usuário clicou em 'não'*/});
-    }
-
-    public ionViewWillEnter(): void {
-        this.buscarSenhas();
     }
 
     public actionSheet(senha: Senha): void {

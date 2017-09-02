@@ -4,6 +4,7 @@ import { Acesso } from './../../models/acesso';
 import { LoginPage } from './../login/login';
 import { AcessoService } from './../../providers/acesso-service';
 import { ToastFactory } from './../../providers/toast-factory';
+import { FirebaseService } from './../../providers/firebase-service';
 
 @Component({
     selector: 'page-pergunta',
@@ -12,8 +13,14 @@ import { ToastFactory } from './../../providers/toast-factory';
 export class PerguntaPage {
     private acesso: Acesso;
 
-    constructor(public navCtrl: NavController, private acessoService: AcessoService, private toastFactory: ToastFactory) {
+    constructor(public navCtrl: NavController, private acessoService: AcessoService, private toastFactory: ToastFactory,
+        private firebase: FirebaseService
+    ) {
         this.acesso = new Acesso();
+    }
+    
+    public ionViewDidEnter() {
+        this.firebase.logPageView('pergunta');
     }
 
     public salvarAcesso(): void {
