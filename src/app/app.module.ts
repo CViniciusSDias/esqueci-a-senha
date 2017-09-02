@@ -27,6 +27,7 @@ import { BtSubmit } from '../components/bt-submit/bt-submit';
 import { Header } from '../components/header/header';
 import { FormAcesso } from '../components/form-acesso/form-acesso';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
 
 @NgModule({
     declarations: [
@@ -76,7 +77,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         AlertFactory,
         AcessoService,
         RecuperacaoService,
-        SplashScreen
+        SplashScreen,
+        FirebaseAnalytics
     ]
 })
 export class AppModule {}
