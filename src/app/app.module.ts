@@ -22,6 +22,7 @@ import { Login } from '../providers/login';
 import { AlertFactory } from '../providers/alert-factory';
 import { AcessoService } from '../providers/acesso-service';
 import { RecuperacaoService } from '../providers/recuperacao-service';
+import { FirebaseService } from '../providers/firebase-service';
 import { FormSenha } from '../components/form-senha/form-senha';
 import { BtSubmit } from '../components/bt-submit/bt-submit';
 import { Header } from '../components/header/header';
@@ -77,6 +78,7 @@ import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
         AlertFactory,
         AcessoService,
         RecuperacaoService,
+        FirebaseService,
         SplashScreen,
         FirebaseAnalytics
     ]
