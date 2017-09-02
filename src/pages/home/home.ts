@@ -12,6 +12,7 @@ import { EditarPage } from './../../pages/editar/editar';
 })
 export class HomePage {
     public senhas: Senha[] = [];
+    public inicializado: boolean = false;
 
     constructor(public navCtrl: NavController, public senhaDao: SenhaDao,
         private toast: ToastFactory, private actionSheetCtrl: ActionSheetController,
@@ -28,6 +29,7 @@ export class HomePage {
                 .then(senhas => {
                     this.senhas = senhas;
                     loading.dismiss();
+                    this.inicializado = true;
                 });
         });
     }
