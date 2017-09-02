@@ -1,9 +1,9 @@
 import { StringHelper } from '../providers/string-helper';
 
 export class Senha {
-    private _id: number;
-    private _senha: string;
-    private _ondeUsar: string;
+    private _id: number = null;
+    private _senha: string = null;
+    private _ondeUsar: string = null;
 
     public get id(): number { return this._id; }
     public set id(id: number) { this._id = id; }
