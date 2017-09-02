@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="dias.vinicius.esqueciasenha" version="2.0.3" versionCode="20003" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="dias.vinicius.esqueciasenha" version="2.0.4" versionCode="20004" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Esqueci a Senha</name>
     <description>
         Aplicativo para armazenar as senhas do usuário no celular, para consultas futuras.
