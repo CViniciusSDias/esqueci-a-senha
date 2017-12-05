@@ -12,14 +12,14 @@ export class MyApp {
     public rootPage;
 
     constructor(platform: Platform, acessoService: AcessoService, splashScreen: SplashScreen) {
-        platform.ready().then(() => {
-            splashScreen.hide();
-            if (!acessoService.primeiroAcesso()) {
-                this.rootPage = LoginPage;
-                return;
-            }
+        platform.ready()
+            .then(() => {
+                if (!acessoService.primeiroAcesso()) {
+                    return this.rootPage = LoginPage;
+                }
 
-            this.rootPage = SlidesPage;
-        });
+                return this.rootPage = SlidesPage;
+            })
+            .then(() => splashScreen.hide());
     }
 }
