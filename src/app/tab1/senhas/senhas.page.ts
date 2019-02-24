@@ -14,7 +14,6 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 export class SenhasPage implements OnInit {
 
   public senhas: Senha[] = [];
-  public inicializado = false;
 
   constructor(public router: NavController, public senhaDao: SenhaDaoService,
               private toast: ToastFactoryService, private actionSheetCtrl: ActionSheetController,
@@ -32,11 +31,10 @@ export class SenhasPage implements OnInit {
     }).then(loading => {
       loading.present();
       this.senhaDao.buscarTodas()
-          .then(senhas => {
-            this.senhas = senhas;
-            loading.dismiss();
-            this.inicializado = true;
-          });
+        .then(senhas => {
+          this.senhas = senhas;
+          loading.dismiss();
+        });
     });
   }
 
