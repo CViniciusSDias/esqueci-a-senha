@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {AcessoService} from './providers/acesso.service';
+import { AcessoService } from './providers/acesso.service';
 
 @Component({
   selector: 'app-root',
