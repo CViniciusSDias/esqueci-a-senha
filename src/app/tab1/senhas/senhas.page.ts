@@ -5,6 +5,7 @@ import { AlertFactoryService } from '../../providers/alert-factory.service';
 import { Senha } from '../../models/senha';
 import { SenhaDaoService } from '../../providers/senha-dao.service';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-senhas',
@@ -15,14 +16,19 @@ export class SenhasPage implements OnInit {
 
   public senhas: Senha[] = [];
 
-  constructor(public router: NavController, public senhaDao: SenhaDaoService,
+  constructor(public navCtrl: NavController, public senhaDao: SenhaDaoService,
               private toast: ToastFactoryService, private actionSheetCtrl: ActionSheetController,
               private alertFactory: AlertFactoryService, private loadingCtrl: LoadingController,
-              private clipboard: Clipboard
+              private clipboard: Clipboard, private router: Router
   ) { }
 
   public ngOnInit(): void {
     this.buscarSenhas();
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd && event.url === '/tabs/tab1') {
+        this.buscarSenhas();
+      }
+    });
   }
 
   private buscarSenhas(): void {
@@ -63,7 +69,7 @@ export class SenhasPage implements OnInit {
           text: 'Ver / Editar',
           icon: 'create',
           handler: () => {
-            this.router.navigateForward(['/tabs/tab1/editar', senha.id]);
+            this.navCtrl.navigateForward(['/tabs/tab1/editar', senha.id]);
           }
         },
         {
