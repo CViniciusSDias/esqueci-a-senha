@@ -5,8 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SenhaPipePipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    const senhaExibida = args[0];
+  transform(value: any, senhaExibida: boolean): string {
     if (senhaExibida) {
       return value;
     }

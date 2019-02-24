@@ -10,7 +10,7 @@
       <ion-icon name="lock" slot="start"></ion-icon>
       <div class="dados-senha">
         <h2>{{senha.ondeUsar}}</h2>
-        <p>{{senha.senha | senha_pipe:senha.exibida}} </p>
+        <p>{{senha.senha | senha_pipe:senha.exibida}}</p>
       </div>
 
       <ion-button type="button" fill="clear" slot="end" (click)="toggleSenhaExibida(senha, $event)" class="toggle-senha">

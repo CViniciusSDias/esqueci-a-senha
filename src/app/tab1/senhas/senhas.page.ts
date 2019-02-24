@@ -87,5 +87,6 @@ export class SenhasPage implements OnInit {
 
   public toggleSenhaExibida(senha: Senha, e) {
     senha.exibida = !senha.exibida;
+    e.stopPropagation();
   }
 }

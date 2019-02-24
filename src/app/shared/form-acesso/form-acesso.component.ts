@@ -12,8 +12,4 @@ export class FormAcessoComponent {
   constructor() {
     this.acesso = new Acesso();
   }
-
-  atribuirValor(campo: string, input: IonInput) {
-    input.getInputElement().then(nativeInput => this.acesso[campo] = nativeInput.value);
-  }
 }
