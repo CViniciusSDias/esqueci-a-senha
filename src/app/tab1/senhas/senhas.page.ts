@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActionSheetController, LoadingController, NavController } from '@ionic/angular';
 import { ToastFactoryService } from '../../providers/toast-factory.service';
 import { AlertFactoryService } from '../../providers/alert-factory.service';
@@ -6,15 +6,18 @@ import { Senha } from '../../models/senha';
 import { SenhaDaoService } from '../../providers/senha-dao.service';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-senhas',
   templateUrl: './senhas.page.html',
   styleUrls: ['./senhas.page.scss'],
 })
-export class SenhasPage implements OnInit {
+export class SenhasPage implements OnInit, OnDestroy {
 
   public senhas: Senha[] = [];
+  private navObservable: Subscription;
 
   constructor(public navCtrl: NavController, public senhaDao: SenhaDaoService,
               private toast: ToastFactoryService, private actionSheetCtrl: ActionSheetController,
@@ -24,11 +27,15 @@ export class SenhasPage implements OnInit {
 
   public ngOnInit(): void {
     this.buscarSenhas();
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd && event.url === '/tabs/tab1') {
-        this.buscarSenhas();
-      }
-    });
+    this.navObservable = this.router
+      .events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter((event: NavigationEnd) => event.url === '/tabs/tab1'))
+      .subscribe(() => this.buscarSenhas());
+  }
+
+  public ngOnDestroy(): void {
+    this.navObservable.unsubscribe();
   }
 
   private buscarSenhas(): void {
