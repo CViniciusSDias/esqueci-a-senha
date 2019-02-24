@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Alterar Dados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="salvarDados()">
+    <form-acesso [acesso]="acesso"></form-acesso>
+
+    <bt-submit>Salvar</bt-submit>
+  </form>
+</ion-content>

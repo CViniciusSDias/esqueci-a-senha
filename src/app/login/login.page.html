@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form (submit)="logar()">
+    <ion-item>
+      <ion-label position="floating">{{acesso.pergunta}}</ion-label>
+      <ion-input type="text" (input)="acesso.resposta = $event.target.value" name="resposta" required></ion-input>
+    </ion-item>
+
+    <div padding>
+      <ion-button color="primary" expand="block" type="submit">
+        Login
+      </ion-button>
+
+      <ion-button color="light" expand="block" type="button" (click)="recuperarResposta()">
+        Esqueci a Resposta
+      </ion-button>
+    </div>
+  </form>
+
+</ion-content>

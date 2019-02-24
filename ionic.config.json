@@ -1,5 +1,7 @@
 {
   "name": "esqueci-a-senha",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

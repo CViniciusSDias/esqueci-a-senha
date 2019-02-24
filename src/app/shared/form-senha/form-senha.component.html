@@ -1,0 +1,12 @@
+<ion-item>
+  <ion-label position="floating">Onde usar</ion-label>
+  <ion-input type="text" (input)="senha.ondeUsar = $event.target.value" name="onde-usar"></ion-input>
+</ion-item>
+
+<ion-item class="input-senha" align-items-end>
+  <ion-label position="floating">Senha</ion-label>
+  <ion-input [type]="tipoCampoSenha" (input)="senha.senha = $event.target.value" name="senha"></ion-input>
+  <ion-button type="button" fill="clear" slot="end" (click)="toggleSenha()" class="toggle-senha">
+    <ion-icon [name]="icone"></ion-icon>
+  </ion-button>
+</ion-item>

@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pergunta Secreta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="salvarAcesso()">
+    <form-acesso [acesso]="acesso"></form-acesso>
+
+    <bt-submit>Salvar</bt-submit>
+  </form>
+</ion-content>
