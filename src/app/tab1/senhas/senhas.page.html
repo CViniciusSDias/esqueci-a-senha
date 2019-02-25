@@ -5,28 +5,30 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list *ngIf="senhas.length; else semSenhas">
-    <ion-item *ngFor="let senha of senhas" (click)="actionSheet(senha)">
-      <ion-icon name="lock" slot="start"></ion-icon>
-      <div class="dados-senha">
-        <h2>{{senha.ondeUsar}}</h2>
-        <p>{{senha.senha | senha_pipe:senha.exibida}}</p>
-      </div>
+  <ng-container *ngIf="inicializado">
+    <ion-list *ngIf="senhas.length; else semSenhas">
+      <ion-item *ngFor="let senha of senhas" (click)="actionSheet(senha)">
+        <ion-icon name="lock" slot="start"></ion-icon>
+        <div class="dados-senha">
+          <h2>{{senha.ondeUsar}}</h2>
+          <p>{{senha.senha | senha_pipe:senha.exibida}}</p>
+        </div>
 
-      <ion-button type="button" fill="clear" slot="end" (click)="toggleSenhaExibida(senha, $event)" class="toggle-senha">
-        <ion-icon [name]="senha.exibida ? 'eye-off' : 'eye'"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-list>
+        <ion-button type="button" fill="clear" slot="end" (click)="toggleSenhaExibida(senha, $event)" class="toggle-senha">
+          <ion-icon [name]="senha.exibida ? 'eye-off' : 'eye'"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
 
-  <ng-template #semSenhas *ngIf="!inicializado">
-    <ion-grid>
-      <ion-row align-items-center>
-        <ion-col>
-          <p><b>Você ainda não tem nenhuma senha cadastrada</b></p>
-          <p>Navegue até a aba "Adicionar" abaixo para criar uma</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ng-template>
+    <ng-template #semSenhas>
+      <ion-grid>
+        <ion-row>
+          <ion-col text-center>
+            <p><b>Você ainda não tem nenhuma senha cadastrada</b></p>
+            <p>Navegue até a aba "Adicionar" abaixo para criar uma</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+  </ng-container>
 </ion-content>

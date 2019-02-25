@@ -7,11 +7,12 @@ import { SenhaDaoService } from '../../providers/senha-dao.service';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter, finalize, delay } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-senhas',
   templateUrl: './senhas.page.html',
+  styleUrls: ['./senhas.page.scss']
 })
 export class SenhasPage implements OnInit, OnDestroy {
 
