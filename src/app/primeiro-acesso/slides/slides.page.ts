@@ -13,5 +13,4 @@ export class SlidesPage {
   continuar() {
     this.navCtrl.navigateRoot('/primeiro-acesso/definir-pergunta');
   }
-
 }

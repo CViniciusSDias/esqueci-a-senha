@@ -12,7 +12,7 @@ import {NavController} from '@ionic/angular';
   styleUrls: ['./editar.page.scss'],
 })
 export class EditarPage implements OnInit {
-  private senha: Senha;
+  public senha: Senha;
 
   constructor(private router: NavController,
               private senhaDao: SenhaDaoService,

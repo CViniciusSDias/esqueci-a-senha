@@ -1,12 +1,14 @@
-<ion-item>
-  <ion-label position="floating">Onde usar</ion-label>
-  <ion-input type="text" (input)="senha.ondeUsar = $event.target.value" name="onde-usar"></ion-input>
-</ion-item>
+<ng-container *ngIf="senha !== undefined">
+  <ion-item>
+    <ion-label position="floating">Onde usar</ion-label>
+    <ion-input type="text" (input)="senha.ondeUsar = $event.target.value" [value]="senha.ondeUsar" name="onde-usar"></ion-input>
+  </ion-item>
 
-<ion-item class="input-senha" align-items-end>
-  <ion-label position="floating">Senha</ion-label>
-  <ion-input [type]="tipoCampoSenha" (input)="senha.senha = $event.target.value" name="senha"></ion-input>
-  <ion-button type="button" fill="clear" slot="end" (click)="toggleSenha()" class="toggle-senha">
-    <ion-icon [name]="icone"></ion-icon>
-  </ion-button>
-</ion-item>
+  <ion-item class="input-senha" align-items-end>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input [type]="tipoCampoSenha" (input)="senha.senha = $event.target.value" [value]="senha.senha" name="senha"></ion-input>
+    <ion-button type="button" fill="clear" slot="end" (click)="toggleSenha()" class="toggle-senha">
+      <ion-icon [name]="icone"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ng-container>

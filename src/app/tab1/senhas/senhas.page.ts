@@ -7,22 +7,26 @@ import { SenhaDaoService } from '../../providers/senha-dao.service';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, finalize, delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-senhas',
   templateUrl: './senhas.page.html',
-  styleUrls: ['./senhas.page.scss'],
 })
 export class SenhasPage implements OnInit, OnDestroy {
 
   public senhas: Senha[] = [];
+  public inicializado = false;
   private navObservable: Subscription;
 
-  constructor(public navCtrl: NavController, public senhaDao: SenhaDaoService,
-              private toast: ToastFactoryService, private actionSheetCtrl: ActionSheetController,
-              private alertFactory: AlertFactoryService, private loadingCtrl: LoadingController,
-              private clipboard: Clipboard, private router: Router
+  constructor(private navCtrl: NavController,
+              private senhaDao: SenhaDaoService,
+              private toast: ToastFactoryService,
+              private actionSheetCtrl: ActionSheetController,
+              private alertFactory: AlertFactoryService,
+              private loadingCtrl: LoadingController,
+              private clipboard: Clipboard,
+              private router: Router
   ) { }
 
   public ngOnInit(): void {
@@ -43,10 +47,12 @@ export class SenhasPage implements OnInit, OnDestroy {
       message: 'Carregando'
     }).then(loading => {
       loading.present();
+      
       this.senhaDao.buscarTodas()
         .then(senhas => {
           this.senhas = senhas;
           loading.dismiss();
+          this.inicializado = true;
         });
     });
   }

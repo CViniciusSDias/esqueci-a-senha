@@ -19,7 +19,7 @@
     </ion-item>
   </ion-list>
 
-  <ng-template #semSenhas>
+  <ng-template #semSenhas *ngIf="!inicializado">
     <ion-grid>
       <ion-row align-items-center>
         <ion-col>
