@@ -53,19 +53,12 @@ export class LoginPage implements OnInit {
       message: 'Enviando resposta para e-mail cadastrado'
     }).then(loading => {
       loading.present();
+
       this.recuperacaoService.recuperarResposta()
         .pipe(finalize(() => loading.dismiss()))
         .subscribe(
           () => this.toast.showToastWithButton('Resposta enviada por e-mail', 'Ok'),
           (erro: HttpErrorResponse) => {
-            /*if (erro.hasOwnProperty('json')) {
-              erro.json().then(resposta => {
-                let mensagem = resposta.hasOwnProperty('mensagem') ? resposta.mensagem : 'Erro ao se conectar com o servidor';
-                this.toast.showToastWithButton(mensagem, 'Ok');
-              });
-
-              return;
-            }*/
             this.toast.showToastWithButton('Ocorreu um erro inesperado', 'Ok');
           }
         );
