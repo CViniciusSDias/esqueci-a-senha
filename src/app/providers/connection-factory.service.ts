@@ -15,14 +15,25 @@ export class ConnectionFactoryService {
   }
 
   private createSchema(db) {
-    const sql = `
-      CREATE TABLE IF NOT EXISTS senha (
-          id INTEGER PRIMARY KEY,
-          onde_usar TEXT NOT NULL,
-          senha TEXT NOT NULL
+    db.transaction(tx => {
+      tx.executeSql(
+        `
+          CREATE TABLE IF NOT EXISTS senha (
+              id INTEGER PRIMARY KEY,
+              onde_usar TEXT NOT NULL,
+              login TEXT DEFAULT NULL,
+              senha TEXT NOT NULL
+          );
+        `,
+        []
       );
-    `;
 
-    db.transaction(tx => tx.executeSql(sql, []));
+      tx.executeSql(
+        'ALTER TABLE senha ADD login VARCHAR DEFAULT NULL',
+        [],
+        () => console.log('sucesso'),
+        (t, erro) => console.warn(erro)
+      );
+    });
   }
 }

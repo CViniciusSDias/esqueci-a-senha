@@ -11,6 +11,7 @@
         <ion-icon name="lock" slot="start"></ion-icon>
         <div class="dados-senha">
           <h2>{{senha.ondeUsar}}</h2>
+          <p *ngIf="senha.login !== null">{{senha.login}}</p>
           <p>{{senha.senha | senha_pipe:senha.exibida}}</p>
         </div>
 

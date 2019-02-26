@@ -19,8 +19,8 @@ export class SenhaDaoService {
   }
 
   public inserir(senha: Senha): Promise<Senha> {
-    const sql = 'INSERT INTO senha (onde_usar, senha) VALUES (?, ?);';
-    const params = [senha.ondeUsar, senha.senha];
+    const sql = 'INSERT INTO senha (onde_usar, login, senha) VALUES (?, ?, ?);';
+    const params = [senha.ondeUsar, senha.login, senha.senha];
 
     return new Promise((resolve, reject) => {
       this.con.transaction(tx => tx.executeSql(sql, params, () => {
@@ -39,6 +39,7 @@ export class SenhaDaoService {
         for (let i = 0; i < rs.rows.length; i++) {
           const senha = new Senha();
           senha.id = rs.rows.item(i).id;
+          senha.login = rs.rows.item(i).login;
           senha.ondeUsar = rs.rows.item(i).onde_usar;
           senha.senha = rs.rows.item(i).senha;
 
@@ -60,6 +61,7 @@ export class SenhaDaoService {
       const item = rs.rows.item(0);
 
       senha.id = item.id;
+      senha.login = item.login;
       senha.ondeUsar = item.onde_usar;
       senha.senha = item.senha;
 
@@ -70,8 +72,8 @@ export class SenhaDaoService {
   }
 
   public atualizar(senha: Senha): void {
-    const sql = 'UPDATE senha SET onde_usar = ?, senha = ? WHERE id = ?;';
-    const params = [senha.ondeUsar, senha.senha, senha.id];
+    const sql = 'UPDATE senha SET onde_usar = ?, login = ?, senha = ? WHERE id = ?;';
+    const params = [senha.ondeUsar, senha.login, senha.senha, senha.id];
 
     this.con.transaction(tx => tx.executeSql(sql, params));
   }

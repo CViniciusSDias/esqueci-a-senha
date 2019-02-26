@@ -4,6 +4,11 @@
     <ion-input type="text" (input)="senha.ondeUsar = $event.target.value" [value]="senha.ondeUsar" name="onde-usar"></ion-input>
   </ion-item>
 
+  <ion-item>
+    <ion-label position="floating">Login</ion-label>
+    <ion-input type="text" (input)="senha.login = $event.target.value" [value]="senha.login" name="login"></ion-input>
+  </ion-item>
+
   <ion-item class="input-senha" align-items-end>
     <ion-label position="floating">Senha</ion-label>
     <ion-input [type]="tipoCampoSenha" (input)="senha.senha = $event.target.value" [value]="senha.senha" name="senha"></ion-input>
