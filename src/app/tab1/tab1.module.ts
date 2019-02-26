@@ -9,6 +9,7 @@ import { PageHeaderModule } from '../shared/page-header/page-header.module';
 import { FormSenhaModule } from '../shared/form-senha/form-senha.module';
 import { BtSubmitModule } from '../shared/bt-submit/bt-submit.module';
 import { SenhaPipePipe } from './senhas/senha-pipe.pipe';
+import { FiltroSenhasPipe } from './senhas/filtro-senhas.pipe';
 
 @NgModule({
   imports: [
@@ -29,6 +30,6 @@ import { SenhaPipePipe } from './senhas/senha-pipe.pipe';
       }
     ])
   ],
-  declarations: [SenhasPage, EditarPage, SenhaPipePipe]
+  declarations: [SenhasPage, EditarPage, SenhaPipePipe, FiltroSenhasPipe]
 })
 export class Tab1PageModule {}

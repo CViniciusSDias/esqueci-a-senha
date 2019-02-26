@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActionSheetController, LoadingController, NavController } from '@ionic/angular';
+import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
+import {ActionSheetController, IonSearchbar, LoadingController, NavController} from '@ionic/angular';
 import { ToastFactoryService } from '../../providers/toast-factory.service';
 import { AlertFactoryService } from '../../providers/alert-factory.service';
 import { Senha } from '../../models/senha';
 import { SenhaDaoService } from '../../providers/senha-dao.service';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import {Subject, Subscription} from 'rxjs';
+import {delay, filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-senhas',
@@ -18,6 +18,9 @@ export class SenhasPage implements OnInit, OnDestroy {
 
   public senhas: Senha[] = [];
   public inicializado = false;
+  public showSearch = false;
+  @ViewChild('busca') public searchBar: IonSearchbar;
+  public filtroSenhas = '';
   private navObservable: Subscription;
 
   constructor(private navCtrl: NavController,
@@ -48,7 +51,7 @@ export class SenhasPage implements OnInit, OnDestroy {
       message: 'Carregando'
     }).then(loading => {
       loading.present();
-      
+
       this.senhaDao.buscarTodas()
         .then(senhas => {
           this.senhas = senhas;
@@ -106,5 +109,21 @@ export class SenhasPage implements OnInit, OnDestroy {
   public toggleSenhaExibida(senha: Senha, e) {
     senha.exibida = !senha.exibida;
     e.stopPropagation();
+  }
+
+  public exibeBusca() {
+    this.showSearch = true;
+
+    // Workaround para focar na barra
+    // TODO: Buscar solução
+    const subject = new Subject();
+    subject.asObservable()
+      .pipe(delay(1))
+      .subscribe(() => this.searchBar.setFocus());
+    subject.next();
+  }
+
+  public filtarSenhas(filtro) {
+    this.filtroSenhas = filtro;
   }
 }

@@ -1,13 +1,36 @@
 <ion-header>
-  <page-header>
-    Home
-  </page-header>
+    <ion-toolbar>
+      <ion-searchbar *ngIf="showSearch; else cabecalho"
+                     animated="false"
+                     showCancelButton="true"
+                     #busca
+                     (ionCancel)="showSearch = false"
+                     placeholder="Buscar senha"
+                     (ionInput)="filtarSenhas($event.target.value)"></ion-searchbar>
+
+      <ng-template #cabecalho>
+        <ion-title>
+          Home
+        </ion-title>
+
+
+        <ion-buttons slot="end">
+          <ion-button slot="icon-only" (click)="exibeBusca()">
+            <ion-icon name="search"></ion-icon>
+          </ion-button>
+
+          <ion-button slot="icon-only">
+            <ion-icon name="exit"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ng-template>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ng-container *ngIf="inicializado">
     <ion-list *ngIf="senhas.length; else semSenhas">
-      <ion-item *ngFor="let senha of senhas" (click)="actionSheet(senha)">
+      <ion-item *ngFor="let senha of senhas | filtroSenhas:filtroSenhas" (click)="actionSheet(senha)">
         <ion-icon name="lock" slot="start"></ion-icon>
         <div class="dados-senha">
           <h2>{{senha.ondeUsar}}</h2>
