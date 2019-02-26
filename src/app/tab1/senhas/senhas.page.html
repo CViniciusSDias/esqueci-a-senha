@@ -4,7 +4,7 @@
                      animated="false"
                      showCancelButton="true"
                      #busca
-                     (ionCancel)="showSearch = false"
+                     (ionCancel)="escondeBusca()"
                      placeholder="Buscar senha"
                      (ionInput)="filtarSenhas($event.target.value)"></ion-searchbar>
 

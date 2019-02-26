@@ -6,8 +6,8 @@ import { Senha } from '../../models/senha';
 import { SenhaDaoService } from '../../providers/senha-dao.service';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Router, NavigationEnd } from '@angular/router';
-import {Subject, Subscription} from 'rxjs';
-import {delay, filter} from 'rxjs/operators';
+import {Observable, Subject, Subscription} from 'rxjs';
+import {debounceTime, delay, filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-senhas',
@@ -22,6 +22,8 @@ export class SenhasPage implements OnInit, OnDestroy {
   @ViewChild('busca') public searchBar: IonSearchbar;
   public filtroSenhas = '';
   private navObservable: Subscription;
+  private filterSub: Subscription;
+  private filterObservable = new Subject<string>();
 
   constructor(private navCtrl: NavController,
               private senhaDao: SenhaDaoService,
@@ -40,6 +42,10 @@ export class SenhasPage implements OnInit, OnDestroy {
       .pipe(filter(event => event instanceof NavigationEnd))
       .pipe(filter((event: NavigationEnd) => event.url === '/tabs/tab1'))
       .subscribe(() => this.buscarSenhas());
+    this.filterObservable
+      .asObservable()
+      .pipe(debounceTime(300))
+      .subscribe(filtro => this.filtroSenhas = filtro);
   }
 
   public ngOnDestroy(): void {
@@ -124,6 +130,11 @@ export class SenhasPage implements OnInit, OnDestroy {
   }
 
   public filtarSenhas(filtro) {
-    this.filtroSenhas = filtro;
+    this.filterObservable.next(filtro);
+  }
+
+  public escondeBusca() {
+    this.showSearch = false;
+    this.filtroSenhas = '';
   }
 }
