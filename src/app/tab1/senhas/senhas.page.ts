@@ -22,7 +22,6 @@ export class SenhasPage implements OnInit, OnDestroy {
   @ViewChild('busca') public searchBar: IonSearchbar;
   public filtroSenhas = '';
   private navObservable: Subscription;
-  private filterSub: Subscription;
   private filterObservable = new Subject<string>();
 
   constructor(private navCtrl: NavController,
@@ -43,13 +42,13 @@ export class SenhasPage implements OnInit, OnDestroy {
       .pipe(filter((event: NavigationEnd) => event.url === '/tabs/tab1'))
       .subscribe(() => this.buscarSenhas());
     this.filterObservable
-      .asObservable()
       .pipe(debounceTime(300))
       .subscribe(filtro => this.filtroSenhas = filtro);
   }
 
   public ngOnDestroy(): void {
     this.navObservable.unsubscribe();
+    this.filterObservable.unsubscribe();
   }
 
   private buscarSenhas(): void {
@@ -136,5 +135,9 @@ export class SenhasPage implements OnInit, OnDestroy {
   public escondeBusca() {
     this.showSearch = false;
     this.filtroSenhas = '';
+  }
+
+  logout() {
+    this.navCtrl.navigateRoot('/login');
   }
 }
