@@ -113,7 +113,7 @@ export class SenhasPage implements OnInit, OnDestroy {
     // Workaround para focar na barra
     // TODO: Buscar solução
     const subject = new Subject();
-    subject.asObservable()
+    subject
       .pipe(delay(1))
       .subscribe(() => this.searchBar.setFocus());
     subject.next();
