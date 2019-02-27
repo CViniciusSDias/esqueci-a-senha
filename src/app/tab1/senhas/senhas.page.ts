@@ -41,6 +41,7 @@ export class SenhasPage implements OnInit, OnDestroy {
       .pipe(filter(event => event instanceof NavigationEnd))
       .pipe(filter((event: NavigationEnd) => event.url === '/tabs/tab1'))
       .subscribe(() => this.buscarSenhas());
+
     this.filterObservable
       .pipe(debounceTime(300))
       .subscribe(filtro => this.filtroSenhas = filtro);
@@ -71,7 +72,7 @@ export class SenhasPage implements OnInit, OnDestroy {
         'Apagar',
         `Tem certeza que deseja apagar a senha de ${senha.ondeUsar}?`
     ).then(() => {
-      this.senhas.splice(this.senhas.indexOf(senha), 1);
+      this.senhas = this.senhas.filter(senhaAtual => senhaAtual.id !== senha.id);
       this.senhaDao.remover(senha);
       this.toast.showToastWithButton('Senha removida com sucesso', 'Ok');
     }).catch(() => {/*Usuário clicou em 'não'*/});
@@ -80,34 +81,24 @@ export class SenhasPage implements OnInit, OnDestroy {
   public actionSheet(senha: Senha): void {
     this.actionSheetCtrl.create({
       header: senha.ondeUsar,
-      buttons: [
-        {
-          text: 'Excluir',
-          role: 'destructive',
-          icon: 'trash',
-          handler: () => { this.remover(senha); }
-        },
-        {
-          text: 'Ver / Editar',
-          icon: 'create',
-          handler: () => {
-            this.navCtrl.navigateForward(['/tabs/tab1/editar', senha.id]);
-          }
-        },
-        {
-          text: 'Copiar',
-          icon: 'copy',
-          handler: () => {
-            this.clipboard.copy(senha.senha)
-              .then(() => this.toast.showToast('Senha copiada', 1000));
-          }
-        },
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          icon: 'close'
-        }
-      ]
+      buttons: [{
+        text: 'Excluir',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => this.remover(senha)
+      }, {
+        text: 'Ver / Editar',
+        icon: 'create',
+        handler: () => this.navCtrl.navigateForward(['/tabs/tab1/editar', senha.id])
+      }, {
+        text: 'Copiar',
+        icon: 'copy',
+        handler: () => { this.clipboard.copy(senha.senha).then(() => this.toast.showToast('Senha copiada', 1000)); }
+      }, {
+        text: 'Cancelar',
+        role: 'cancel',
+        icon: 'close'
+      }]
     }).then(actionSheet => actionSheet.present());
   }
 
