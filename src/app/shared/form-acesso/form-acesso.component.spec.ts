@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormAcessoPage } from './form-acesso.page';
+import { FormAcessoComponent } from './form-acesso.component';
 
 describe('FormAcessoPage', () => {
-  let component: FormAcessoPage;
-  let fixture: ComponentFixture<FormAcessoPage>;
+  let component: FormAcessoComponent;
+  let fixture: ComponentFixture<FormAcessoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormAcessoPage ],
+      declarations: [ FormAcessoComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormAcessoPage);
+    fixture = TestBed.createComponent(FormAcessoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

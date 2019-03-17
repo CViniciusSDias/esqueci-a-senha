@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BtSubmitPage } from './bt-submit.page';
+import { BtSubmitComponent } from './bt-submit.component';
 
 describe('BtSubmitPage', () => {
-  let component: BtSubmitPage;
-  let fixture: ComponentFixture<BtSubmitPage>;
+  let component: BtSubmitComponent;
+  let fixture: ComponentFixture<BtSubmitComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BtSubmitPage ],
+      declarations: [ BtSubmitComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BtSubmitPage);
+    fixture = TestBed.createComponent(BtSubmitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

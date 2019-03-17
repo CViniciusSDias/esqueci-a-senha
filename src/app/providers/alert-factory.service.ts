@@ -8,7 +8,7 @@ export class AlertFactoryService {
 
   constructor(public alertCtrl: AlertController) { }
 
-  public getConfirm(titulo: string, texto: string): Promise<any> {
+  public getConfirm(titulo: string, texto: string): Promise<void> {
     return new Promise((resolve, reject) => {
       this.alertCtrl.create({
         header: titulo,

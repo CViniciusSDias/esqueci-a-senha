@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { Acesso } from '../../models/acesso';
 import {ToastFactoryService} from '../../providers/toast-factory.service';
 import {AcessoService} from '../../providers/acesso.service';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-alterar-dados',
@@ -12,7 +12,7 @@ import {AcessoService} from '../../providers/acesso.service';
 export class AlterarDadosPage implements OnInit {
   private acesso: Acesso;
 
-  constructor(private location: Location,
+  constructor(private navCtrl: NavController,
               private toastFactory: ToastFactoryService,
               private acessoService: AcessoService
   ) { }
@@ -28,6 +28,6 @@ export class AlterarDadosPage implements OnInit {
     }
     this.acessoService.salvar(this.acesso);
     this.toastFactory.showToast('Dados alterados com sucesso', 2000, 'top');
-    this.location.back();
+    this.navCtrl.navigateBack(['/tabs/tab3/configuracoes']);
   }
 }
