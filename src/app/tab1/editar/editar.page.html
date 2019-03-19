@@ -6,8 +6,5 @@
 </ion-header>
 
 <ion-content padding>
-  <form (submit)="salvarSenha()">
-    <form-senha [senha]="senha"></form-senha>
-    <bt-submit>Salvar</bt-submit>
-  </form>
+    <form-senha [senha]="senha" (submitEmitter)="salvarSenha()"></form-senha>
 </ion-content>
