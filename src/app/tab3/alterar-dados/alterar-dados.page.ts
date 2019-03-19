@@ -27,7 +27,7 @@ export class AlterarDadosPage implements OnInit {
       return;
     }
     this.acessoService.salvar(this.acesso);
-    this.toastFactory.showToast('Dados alterados com sucesso', 2000, 'top');
-    this.navCtrl.navigateBack(['/tabs/tab3/configuracoes']);
+    this.toastFactory.showToastWithButton('Dados alterados com sucesso', 'Ok', 1000);
+    this.navCtrl.navigateBack(['/tabs/tab3']);
   }
 }

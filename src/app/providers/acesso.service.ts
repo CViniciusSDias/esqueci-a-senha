@@ -19,6 +19,9 @@ export class AcessoService {
     return usos;
   }
 
+  /**
+   * Busca por propriedades com underscore (_) implementada pois antes as propriedades estavam definidas assim na classe Acesso
+   */
   public buscarDados(): Acesso {
     const acessoSalvo: any = JSON.parse(localStorage.getItem('acesso'));
     if (acessoSalvo === null) {
@@ -26,9 +29,9 @@ export class AcessoService {
     }
 
     const acesso = new Acesso();
-    acesso.pergunta = acessoSalvo._pergunta;
-    acesso.resposta = acessoSalvo._resposta;
-    acesso.email = acessoSalvo._email;
+    acesso.pergunta = acessoSalvo._pergunta ? acessoSalvo._pergunta : acessoSalvo.pergunta;
+    acesso.resposta = acessoSalvo._resposta ? acessoSalvo._resposta : acessoSalvo.resposta;
+    acesso.email = acessoSalvo._email ? acessoSalvo._email : acessoSalvo.email;
 
     return acesso;
   }

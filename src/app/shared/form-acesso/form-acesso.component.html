@@ -1,14 +1,18 @@
-<ion-item>
-  <ion-label position="floating">Pergunta</ion-label>
-  <ion-input type="text" (input)="acesso.pergunta = $event.target.value" [value]="acesso.pergunta" required name="pergunta"></ion-input>
-</ion-item>
+<form (submit)="submitForm()" [formGroup]="formGroup">
+  <ion-item>
+    <ion-label position="floating">Pergunta</ion-label>
+    <ion-input type="text" formControlName="pergunta"></ion-input>
+  </ion-item>
 
-<ion-item>
-  <ion-label position="floating">Resposta</ion-label>
-  <ion-input type="text" (input)="acesso.resposta = $event.target.value" [value]="acesso.resposta" required name="resposta"></ion-input>
-</ion-item>
+  <ion-item>
+    <ion-label position="floating">Resposta</ion-label>
+    <ion-input type="text" formControlName="resposta"></ion-input>
+  </ion-item>
 
-<ion-item>
-  <ion-label position="floating">E-mail</ion-label>
-  <ion-input type="email" (input)="acesso.email = $event.target.value" [value]="acesso.email" required name="email" inputmode="email"></ion-input>
-</ion-item>
+  <ion-item>
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input type="email" formControlName="email" inputmode="email"></ion-input>
+  </ion-item>
+
+  <bt-submit [disabled]="formGroup.invalid">Salvar</bt-submit>
+</form>

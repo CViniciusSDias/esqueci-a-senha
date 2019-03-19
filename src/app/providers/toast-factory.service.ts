@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ToastController} from "@ionic/angular";
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class ToastFactoryService {
   constructor(public toastCtrl: ToastController) { }
 
   public showToastWithButton(message: string, closeButtonText: string, duration: number = 5000) {
-    let showCloseButton = true;
+    const showCloseButton = true;
     this.toastCtrl.create({message, showCloseButton, closeButtonText, duration})
         .then(toast => toast.present());
   }

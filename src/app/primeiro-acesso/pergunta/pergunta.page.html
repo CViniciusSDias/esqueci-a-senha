@@ -6,9 +6,5 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="salvarAcesso()">
-    <form-acesso [acesso]="acesso"></form-acesso>
-
-    <bt-submit>Salvar</bt-submit>
-  </form>
+  <form-acesso (submitEmitter)="salvarAcesso()" [acesso]="acesso"></form-acesso>
 </ion-content>

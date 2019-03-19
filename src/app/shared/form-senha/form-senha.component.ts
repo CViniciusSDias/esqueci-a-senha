@@ -46,6 +46,6 @@ export class FormSenhaComponent implements OnChanges {
     this.senha.ondeUsar = this.formGroup.get('ondeUsar').value;
     this.senha.login = this.formGroup.get('login').value;
     this.senha.senha = this.formGroup.get('senha').value;
-    this.submitEmitter.next(this.senha);
+    this.submitEmitter.emit(this.senha);
   }
 }
