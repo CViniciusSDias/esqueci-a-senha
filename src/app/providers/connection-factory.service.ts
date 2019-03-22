@@ -32,7 +32,11 @@ export class ConnectionFactoryService {
         'ALTER TABLE senha ADD login VARCHAR DEFAULT NULL',
         [],
         () => console.log('sucesso'),
-        (t, erro) => console.warn(erro)
+        (t, erro) => {
+          if (!erro.message.includes('1 duplicate column name: login')) {
+            console.error(erro);
+          }
+        }
       );
     });
   }
