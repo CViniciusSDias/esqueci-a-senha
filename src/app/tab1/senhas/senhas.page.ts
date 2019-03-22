@@ -6,7 +6,7 @@ import { Senha } from '../../models/senha';
 import { SenhaDaoService } from '../../providers/senha-dao.service';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Router, NavigationEnd } from '@angular/router';
-import {Observable, Subject, Subscription} from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import {debounceTime, delay, filter} from 'rxjs/operators';
 
 @Component({
