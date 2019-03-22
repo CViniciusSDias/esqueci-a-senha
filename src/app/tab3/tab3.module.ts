@@ -1,8 +1,12 @@
-import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
+import { IonicModule } from '@ionic/angular';
+
+import { AppVersion } from '@ionic-native/app-version/ngx';
+
 import { AlterarDadosPage } from './alterar-dados/alterar-dados.page';
 import { SobrePage } from './sobre/sobre.page';
 import { ConfiguracoesPage } from './configuracoes/configuracoes.page';
@@ -33,6 +37,7 @@ import { BtSubmitModule } from '../shared/bt-submit/bt-submit.module';
       }
     ])
   ],
-  declarations: [ConfiguracoesPage, AlterarDadosPage, SobrePage]
+  declarations: [ConfiguracoesPage, AlterarDadosPage, SobrePage],
+  providers: [ AppVersion ]
 })
 export class Tab3PageModule {}
