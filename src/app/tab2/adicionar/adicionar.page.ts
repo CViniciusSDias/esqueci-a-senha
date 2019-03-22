@@ -8,7 +8,7 @@ import { SenhaDaoService } from '../../providers/senha-dao.service';
     templateUrl: 'adicionar.page.html'
 })
 export class AdicionarPage {
-    private senha: Senha;
+    public senha: Senha;
 
     constructor(private senhaDao: SenhaDaoService,
                 private toast: ToastFactoryService

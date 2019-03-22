@@ -15,7 +15,7 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  private acesso: Acesso;
+  public acesso: Acesso;
 
   constructor(private acessoService: AcessoService,
               public navCtrl: NavController,

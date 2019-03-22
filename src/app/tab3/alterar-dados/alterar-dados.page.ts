@@ -10,7 +10,7 @@ import {NavController} from '@ionic/angular';
   styleUrls: ['./alterar-dados.page.scss'],
 })
 export class AlterarDadosPage implements OnInit {
-  private acesso: Acesso;
+  public acesso: Acesso;
 
   constructor(private navCtrl: NavController,
               private toastFactory: ToastFactoryService,

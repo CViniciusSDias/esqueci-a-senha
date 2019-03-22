@@ -10,7 +10,7 @@ import {Acesso} from '../../models/acesso';
   styleUrls: ['./pergunta.page.scss'],
 })
 export class PerguntaPage implements OnInit {
-  private acesso: Acesso;
+  public acesso: Acesso;
 
   constructor(private navCtrl: NavController,
               private acessoService: AcessoService,
