@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { Clipboard } from '@ionic-native/clipboard/ngx';
+
 import { SenhasPage } from './senhas/senhas.page';
 import { EditarPage } from './editar/editar.page';
 import { PageHeaderModule } from '../shared/page-header/page-header.module';
@@ -29,6 +31,7 @@ import { FiltroSenhasPipe } from './senhas/filtro-senhas.pipe';
       }
     ])
   ],
-  declarations: [SenhasPage, EditarPage, SenhaPipePipe, FiltroSenhasPipe]
+  declarations: [SenhasPage, EditarPage, SenhaPipePipe, FiltroSenhasPipe],
+  providers: [ Clipboard ]
 })
 export class Tab1PageModule {}
