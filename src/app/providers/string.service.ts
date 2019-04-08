@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
 export class StringService {
 
   public static empty(string): boolean {
-    return string === undefined || string === '';
+    return typeof string !== 'string' || string.length === 0;
   }
 
   public static isEmail(email: string): boolean {
-    let regex = new RegExp(/^[a-z0-9-._]+@[a-z0-9-._]+\.([a-z]+)+$/);
+    const regex = new RegExp(/^[a-z0-9-._]+@[a-z0-9-._]+\.([a-z]+)+$/);
 
     return regex.test(email);
   }
