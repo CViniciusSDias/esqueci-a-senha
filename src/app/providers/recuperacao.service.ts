@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {AcessoService} from './acesso.service';
-import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { AcessoService } from './acesso.service';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class RecuperacaoService {
