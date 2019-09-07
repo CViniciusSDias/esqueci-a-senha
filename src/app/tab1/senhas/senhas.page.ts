@@ -1,5 +1,5 @@
-import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
-import {ActionSheetController, IonSearchbar, LoadingController, NavController} from '@ionic/angular';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { ActionSheetController, IonSearchbar, LoadingController, NavController } from '@ionic/angular';
 import { ToastFactoryService } from '../../providers/toast-factory.service';
 import { AlertFactoryService } from '../../providers/alert-factory.service';
 import { Senha } from '../../models/senha';
