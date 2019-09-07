@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Acesso } from '../models/acesso';
 import { AcessoService } from '../providers/acesso.service';
 import { ToastFactoryService } from '../providers/toast-factory.service';
@@ -14,8 +14,9 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, OnDestroy {
   public acesso: Acesso;
+  private backButtonSubscription;
 
   constructor(private acessoService: AcessoService,
               public navCtrl: NavController,
@@ -35,6 +36,12 @@ export class LoginPage implements OnInit {
     if (this.platform.is('android') && this.appRate.naoExibiuNessaSessao()) {
       this.appRate.pedirAvaliacao(qtdAcessos);
     }
+
+    this.backButtonSubscription = this.platform.backButton.subscribe(_ => navigator['app'].exitApp());
+  }
+
+  public ngOnDestroy(): void {
+    this.backButtonSubscription.unsubscribe();
   }
 
   public logar(): void {

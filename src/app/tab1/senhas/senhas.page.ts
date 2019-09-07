@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { ActionSheetController, IonSearchbar, LoadingController, NavController } from '@ionic/angular';
+import {ActionSheetController, IonSearchbar, LoadingController, NavController, Platform} from '@ionic/angular';
 import { ToastFactoryService } from '../../providers/toast-factory.service';
 import { AlertFactoryService } from '../../providers/alert-factory.service';
 import { Senha } from '../../models/senha';
 import { SenhaDaoService } from '../../providers/senha-dao.service';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { Router, NavigationEnd } from '@angular/router';
-import { Subject, Subscription } from 'rxjs';
-import {debounceTime, delay, filter} from 'rxjs/operators';
+import {Subject, Subscription, SubscriptionLike} from 'rxjs';
+import {buffer, debounceTime, delay, filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-senhas',
@@ -23,6 +23,7 @@ export class SenhasPage implements OnInit, OnDestroy {
   public filtroSenhas = '';
   private navObservable: Subscription;
   private filterObservable = new Subject<string>();
+  private backButtonSubscription: SubscriptionLike;
 
   constructor(private navCtrl: NavController,
               private senhaDao: SenhaDaoService,
@@ -31,7 +32,8 @@ export class SenhasPage implements OnInit, OnDestroy {
               private alertFactory: AlertFactoryService,
               private loadingCtrl: LoadingController,
               private clipboard: Clipboard,
-              private router: Router
+              private router: Router,
+              private platform: Platform
   ) { }
 
   public ngOnInit(): void {
@@ -45,11 +47,20 @@ export class SenhasPage implements OnInit, OnDestroy {
     this.filterObservable
       .pipe(debounceTime(300))
       .subscribe(filtro => this.filtroSenhas = filtro);
+
+    const stream = this.platform.backButton.pipe(debounceTime(300));
+    this.backButtonSubscription = this.platform.backButton
+        .pipe(buffer(stream))
+        .pipe(map(list => list.length))
+        .pipe(filter(count => count === 2))
+        .subscribe(_ => navigator['app'].exitApp());
   }
 
   public ngOnDestroy(): void {
     this.navObservable.unsubscribe();
     this.filterObservable.unsubscribe();
+    this.backButtonSubscription.unsubscribe();
+    console.log('a');
   }
 
   private buscarSenhas(): void {
