@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
 
   <form (submit)="logar()">
     <ion-item>
@@ -12,7 +12,7 @@
       <ion-input type="text" (input)="acesso.resposta = $event.target.value" name="resposta" required></ion-input>
     </ion-item>
 
-    <div padding>
+    <div class="ion-padding">
       <ion-button color="primary" expand="block" type="submit">
         Login
       </ion-button>

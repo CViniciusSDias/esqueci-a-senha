@@ -27,7 +27,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
   <ng-container *ngIf="inicializado">
     <ion-list *ngIf="senhas.length; else semSenhas">
       <ion-item *ngFor="let senha of senhas | filtroSenhas:filtroSenhas" (click)="actionSheet(senha)">
