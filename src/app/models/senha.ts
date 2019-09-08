@@ -1,4 +1,4 @@
-import { StringService } from '../providers/string.service';
+import {StringService} from '../providers/string.service';
 
 export class Senha {
     public id: number = null;

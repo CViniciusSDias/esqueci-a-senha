@@ -1,22 +1,26 @@
-import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import {Injectable} from '@angular/core';
+import {Toast} from '@ionic-native/toast/ngx';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ToastFactoryService {
 
-  constructor(public toastCtrl: ToastController) { }
+    constructor(private toast: Toast) {
+    }
 
-  public showToastWithButton(message: string, closeButtonText: string, duration: number = 5000) {
-    const showCloseButton = true;
-    this.toastCtrl.create({message, showCloseButton, closeButtonText, duration})
-        .then(toast => toast.present());
-  }
+    public showToastWithButton(message: string, closeButtonText: string, duration: number = 5000) {
+        this.showToast(message, duration, 'bottom');
+    }
 
-  public showToast(message: string, duration: number = 3000, position: 'bottom' | 'top' | 'middle' = 'bottom') {
-    const showCloseButton = false;
-    this.toastCtrl.create({message, showCloseButton, duration, position})
-        .then(toast => toast.present());
-  }
+    public showToast(message: string, duration: number = 3000, position: 'bottom' | 'top' | 'center' = 'bottom') {
+        this.toast.showWithOptions({
+            message,
+            duration,
+            position,
+            styling: {
+                backgroundColor: '#000000'
+            }
+        }).subscribe();
+    }
 }

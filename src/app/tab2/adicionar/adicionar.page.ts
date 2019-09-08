@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Senha } from '../../models/senha';
-import { ToastFactoryService } from '../../providers/toast-factory.service';
-import { SenhaDaoService } from '../../providers/senha-dao.service';
+import {Component} from '@angular/core';
+import {Senha} from '../../models/senha';
+import {ToastFactoryService} from '../../providers/toast-factory.service';
+import {SenhaDaoService} from '../../providers/senha-dao.service';
 
 @Component({
     selector: 'page-adicionar',
@@ -24,7 +24,7 @@ export class AdicionarPage {
 
         this.senhaDao.inserir(this.senha)
             .then(() => {
-                this.toast.showToastWithButton('Senha cadastrada com sucesso', 'Ok', 2000);
+                this.toast.showToastWithButton('Senha cadastrada com sucesso', 'Ok', 1500);
                 this.senha = new Senha();
             })
             .catch(erro => this.toast.showToastWithButton(erro, 'Ok', 2000));

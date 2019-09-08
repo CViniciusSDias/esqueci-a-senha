@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { StringService } from './string.service';
+import {StringService} from './string.service';
 
 describe('StringService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+    beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
-    const service: StringService = TestBed.get(StringService);
-    expect(service).toBeTruthy();
-  });
+    it('should be created', () => {
+        const service: StringService = TestBed.get(StringService);
+        expect(service).toBeTruthy();
+    });
 });

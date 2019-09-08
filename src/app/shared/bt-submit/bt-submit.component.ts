@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'bt-submit',
-  templateUrl: './bt-submit.component.html'
+    selector: 'bt-submit',
+    templateUrl: './bt-submit.component.html'
 })
 export class BtSubmitComponent {
-  @Input()
-  public disabled: boolean;
+    @Input()
+    public disabled: boolean;
 }

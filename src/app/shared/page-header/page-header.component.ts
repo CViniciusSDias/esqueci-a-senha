@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NavController} from '@ionic/angular';
 
 @Component({
-  selector: 'page-header',
-  templateUrl: './page-header.component.html'
+    selector: 'page-header',
+    templateUrl: './page-header.component.html'
 })
 export class PageHeaderComponent {
 
-  constructor(private navCtrl: NavController) { }
+    constructor(private navCtrl: NavController) {
+    }
 
-  public logOut(): void {
-    this.navCtrl.navigateRoot('/login');
-  }
+    public logOut(): void {
+        this.navCtrl.navigateRoot('/login');
+    }
 
 }

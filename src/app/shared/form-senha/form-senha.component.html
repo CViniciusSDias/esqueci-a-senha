@@ -1,21 +1,21 @@
 <form (submit)="submitForm()" *ngIf="senha !== undefined" [formGroup]="formGroup">
-  <ion-item>
-    <ion-label position="floating">Onde usar</ion-label>
-    <ion-input type="text" formControlName="ondeUsar"></ion-input>
-  </ion-item>
+    <ion-item>
+        <ion-label position="floating">Onde usar</ion-label>
+        <ion-input type="text" formControlName="ondeUsar"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Login</ion-label>
-    <ion-input type="text" formControlName="login"></ion-input>
-  </ion-item>
+    <ion-item>
+        <ion-label position="floating">Login</ion-label>
+        <ion-input type="text" formControlName="login"></ion-input>
+    </ion-item>
 
-  <ion-item class="input-senha ion-align-items-end">
-    <ion-label position="floating">Senha</ion-label>
-    <ion-input [type]="tipoCampoSenha" formControlName="senha"></ion-input>
-    <ion-button type="button" fill="clear" slot="end" (click)="toggleSenha()" class="toggle-senha">
-      <ion-icon [name]="icone"></ion-icon>
-    </ion-button>
-  </ion-item>
+    <ion-item class="input-senha ion-align-items-end">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input [type]="tipoCampoSenha" formControlName="senha"></ion-input>
+        <ion-button type="button" fill="clear" slot="end" (click)="toggleSenha()" class="toggle-senha">
+            <ion-icon [name]="icone"></ion-icon>
+        </ion-button>
+    </ion-item>
 
-  <bt-submit [disabled]="formGroup.invalid">Salvar</bt-submit>
+    <bt-submit [disabled]="formGroup.invalid">Salvar</bt-submit>
 </form>

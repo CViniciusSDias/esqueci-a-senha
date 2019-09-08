@@ -1,111 +1,111 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ConnectionFactoryService} from './connection-factory.service';
 import {Senha} from '../models/senha';
 import {Observable, Subject} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class SenhaDaoService {
 
-  private readonly con: any;
+    private readonly con: any;
 
-  public constructor(factory: ConnectionFactoryService) {
-    this.con = factory.getConnection();
+    public constructor(factory: ConnectionFactoryService) {
+        this.con = factory.getConnection();
 
-    if (localStorage.getItem('imported') === null) {
-      this.importData();
-    }
-  }
-
-  public inserir(senha: Senha): Promise<Senha> {
-    const sql = 'INSERT INTO senha (onde_usar, login, senha) VALUES (?, ?, ?);';
-    const params = [senha.ondeUsar, senha.login, senha.senha];
-
-    return new Promise((resolve, reject) => {
-      this.con.transaction(tx => tx.executeSql(sql, params, () => {
-        resolve(senha);
-      }, () => reject('Erro ao inserir senha')));
-    });
-  }
-
-  public buscarTodas(): Promise<Senha[]> {
-    const sql = 'SELECT * FROM senha ORDER BY onde_usar;';
-
-    return new Promise((resolve, reject) => {
-      this.con.transaction(tx => tx.executeSql(sql, [], (t, rs) => {
-        const senhas: Senha[] = [];
-
-        for (let i = 0; i < rs.rows.length; i++) {
-          const senha = new Senha();
-          senha.id = rs.rows.item(i).id;
-          senha.login = rs.rows.item(i).login;
-          senha.ondeUsar = rs.rows.item(i).onde_usar;
-          senha.senha = rs.rows.item(i).senha;
-
-          senhas.push(senha);
+        if (localStorage.getItem('imported') === null) {
+            this.importData();
         }
+    }
 
-        resolve(senhas);
-      }, () => reject('Erro ao buscar senhas')));
-    });
-  }
+    public inserir(senha: Senha): Promise<Senha> {
+        const sql = 'INSERT INTO senha (onde_usar, login, senha) VALUES (?, ?, ?);';
+        const params = [senha.ondeUsar, senha.login, senha.senha];
 
-  public buscarUma(id: number): Observable<Senha> {
-    const sql = 'SELECT * FROM senha WHERE id = ?';
+        return new Promise((resolve, reject) => {
+            this.con.transaction(tx => tx.executeSql(sql, params, () => {
+                resolve(senha);
+            }, () => reject('Erro ao inserir senha')));
+        });
+    }
 
-    const subject = new Subject<Senha>();
+    public buscarTodas(): Promise<Senha[]> {
+        const sql = 'SELECT * FROM senha ORDER BY onde_usar;';
 
-    this.con.transaction(tx => tx.executeSql(sql, [id], (t, rs) => {
-      const senha = new Senha();
-      const item = rs.rows.item(0);
+        return new Promise((resolve, reject) => {
+            this.con.transaction(tx => tx.executeSql(sql, [], (t, rs) => {
+                const senhas: Senha[] = [];
 
-      senha.id = item.id;
-      senha.login = item.login;
-      senha.ondeUsar = item.onde_usar;
-      senha.senha = item.senha;
+                for (let i = 0; i < rs.rows.length; i++) {
+                    const senha = new Senha();
+                    senha.id = rs.rows.item(i).id;
+                    senha.login = rs.rows.item(i).login;
+                    senha.ondeUsar = rs.rows.item(i).onde_usar;
+                    senha.senha = rs.rows.item(i).senha;
 
-      subject.next(senha);
-    }), () => subject.error('Erro ao buscar senha'));
+                    senhas.push(senha);
+                }
 
-    return subject.asObservable();
-  }
+                resolve(senhas);
+            }, () => reject('Erro ao buscar senhas')));
+        });
+    }
 
-  public atualizar(senha: Senha): void {
-    const sql = 'UPDATE senha SET onde_usar = ?, login = ?, senha = ? WHERE id = ?;';
-    const params = [senha.ondeUsar, senha.login, senha.senha, senha.id];
+    public buscarUma(id: number): Observable<Senha> {
+        const sql = 'SELECT * FROM senha WHERE id = ?';
 
-    this.con.transaction(tx => tx.executeSql(sql, params));
-  }
+        const subject = new Subject<Senha>();
 
-  public remover(senha: Senha): void {
-    const sql = 'DELETE FROM senha WHERE id = ?;';
-    const params = [senha.id];
+        this.con.transaction(tx => tx.executeSql(sql, [id], (t, rs) => {
+            const senha = new Senha();
+            const item = rs.rows.item(0);
 
-    this.con.transaction(tx => tx.executeSql(sql, params));
-  }
+            senha.id = item.id;
+            senha.login = item.login;
+            senha.ondeUsar = item.onde_usar;
+            senha.senha = item.senha;
 
-  private importData() {
-    const sql = 'SELECT nome, senha FROM login ORDER BY nome;';
+            subject.next(senha);
+        }), () => subject.error('Erro ao buscar senha'));
 
-    this.con.transaction(tx => {
-      tx.executeSql(
-          sql,
-          [],
-          (t, rs) => {
-            for (let i = 0; i < rs.rows.length; i++) {
-              const senha = new Senha();
-              senha.ondeUsar = rs.rows.item(i).nome;
-              senha.senha = rs.rows.item(i).senha;
-              this.inserir(senha);
-            }
+        return subject.asObservable();
+    }
 
-            t.executeSql('DROP TABLE login', []);
-          },
-          null // Provavelmente porque a tabela não existe. Fresh new install
-      );
-    });
+    public atualizar(senha: Senha): void {
+        const sql = 'UPDATE senha SET onde_usar = ?, login = ?, senha = ? WHERE id = ?;';
+        const params = [senha.ondeUsar, senha.login, senha.senha, senha.id];
 
-    localStorage.setItem('imported', '1');
-  }
+        this.con.transaction(tx => tx.executeSql(sql, params));
+    }
+
+    public remover(senha: Senha): void {
+        const sql = 'DELETE FROM senha WHERE id = ?;';
+        const params = [senha.id];
+
+        this.con.transaction(tx => tx.executeSql(sql, params));
+    }
+
+    private importData() {
+        const sql = 'SELECT nome, senha FROM login ORDER BY nome;';
+
+        this.con.transaction(tx => {
+            tx.executeSql(
+                sql,
+                [],
+                (t, rs) => {
+                    for (let i = 0; i < rs.rows.length; i++) {
+                        const senha = new Senha();
+                        senha.ondeUsar = rs.rows.item(i).nome;
+                        senha.senha = rs.rows.item(i).senha;
+                        this.inserir(senha);
+                    }
+
+                    t.executeSql('DROP TABLE login', []);
+                },
+                null // Provavelmente porque a tabela não existe. Fresh new install
+            );
+        });
+
+        localStorage.setItem('imported', '1');
+    }
 }

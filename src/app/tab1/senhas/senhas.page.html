@@ -1,58 +1,59 @@
 <ion-header>
     <ion-toolbar>
-      <ion-searchbar *ngIf="showSearch; else cabecalho"
-                     animated="false"
-                     showCancelButton="true"
-                     #busca
-                     (ionCancel)="escondeBusca()"
-                     placeholder="Buscar senha"
-                     (ionInput)="filtarSenhas($event.target.value)"></ion-searchbar>
+        <ion-searchbar *ngIf="showSearch; else cabecalho"
+                       animated="false"
+                       showCancelButton="true"
+                       #busca
+                       (ionCancel)="escondeBusca()"
+                       placeholder="Buscar senha"
+                       (ionInput)="filtarSenhas($event.target.value)"></ion-searchbar>
 
-      <ng-template #cabecalho>
-        <ion-title>
-          Home
-        </ion-title>
+        <ng-template #cabecalho>
+            <ion-title>
+                Home
+            </ion-title>
 
 
-        <ion-buttons slot="end">
-          <ion-button slot="icon-only" (click)="exibeBusca()">
-            <ion-icon name="search"></ion-icon>
-          </ion-button>
+            <ion-buttons slot="end">
+                <ion-button slot="icon-only" (click)="exibeBusca()">
+                    <ion-icon name="search"></ion-icon>
+                </ion-button>
 
-          <ion-button slot="icon-only" (click)="logout()">
-            <ion-icon name="exit"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ng-template>
+                <ion-button slot="icon-only" (click)="logout()">
+                    <ion-icon name="exit"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ng-template>
     </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ng-container *ngIf="inicializado">
-    <ion-list *ngIf="senhas.length; else semSenhas">
-      <ion-item *ngFor="let senha of senhas | filtroSenhas:filtroSenhas" (click)="actionSheet(senha)">
-        <ion-icon name="lock" slot="start"></ion-icon>
-        <div class="dados-senha">
-          <h2>{{senha.ondeUsar}}</h2>
-          <p *ngIf="senha.login !== null">{{senha.login}}</p>
-          <p>{{senha.senha | senha_pipe:senha.exibida}}</p>
-        </div>
+    <ng-container *ngIf="inicializado">
+        <ion-list *ngIf="senhas.length; else semSenhas">
+            <ion-item *ngFor="let senha of senhas | filtroSenhas:filtroSenhas" (click)="actionSheet(senha)">
+                <ion-icon name="lock" slot="start"></ion-icon>
+                <div class="dados-senha">
+                    <h2>{{senha.ondeUsar}}</h2>
+                    <p *ngIf="senha.login !== null">{{senha.login}}</p>
+                    <p>{{senha.senha | senha_pipe:senha.exibida}}</p>
+                </div>
 
-        <ion-button type="button" fill="clear" slot="end" (click)="toggleSenhaExibida(senha, $event)" class="toggle-senha">
-          <ion-icon [name]="senha.exibida ? 'eye-off' : 'eye'"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-list>
+                <ion-button type="button" fill="clear" slot="end" (click)="toggleSenhaExibida(senha, $event)"
+                            class="toggle-senha">
+                    <ion-icon [name]="senha.exibida ? 'eye-off' : 'eye'"></ion-icon>
+                </ion-button>
+            </ion-item>
+        </ion-list>
 
-    <ng-template #semSenhas>
-      <ion-grid>
-        <ion-row>
-          <ion-col text-center>
-            <p><b>Você ainda não tem nenhuma senha cadastrada</b></p>
-            <p>Navegue até a aba "Adicionar" abaixo para criar uma</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ng-template>
-  </ng-container>
+        <ng-template #semSenhas>
+            <ion-grid>
+                <ion-row>
+                    <ion-col text-center>
+                        <p><b>Você ainda não tem nenhuma senha cadastrada</b></p>
+                        <p>Navegue até a aba "Adicionar" abaixo para criar uma</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ng-template>
+    </ng-container>
 </ion-content>

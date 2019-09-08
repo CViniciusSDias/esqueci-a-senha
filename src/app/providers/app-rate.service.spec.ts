@@ -1,14 +1,14 @@
-import { AppRateService } from './app-rate.service';
+import {AppRateService} from './app-rate.service';
 
 describe('AppRateService', () => {
-  let appRateSpy, service;
+    let appRateSpy, service;
 
-  beforeEach(() => {
-    appRateSpy = jasmine.createSpyObj('AppRate', ['promptForRating']);
-    service = new AppRateService(appRateSpy);
-  });
+    beforeEach(() => {
+        appRateSpy = jasmine.createSpyObj('AppRate', ['promptForRating']);
+        service = new AppRateService(appRateSpy);
+    });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+    it('should be created', () => {
+        expect(service).toBeTruthy();
+    });
 });

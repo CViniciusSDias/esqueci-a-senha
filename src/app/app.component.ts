@@ -1,35 +1,35 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { NavController, Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AcessoService } from './providers/acesso.service';
+import {NavController, Platform} from '@ionic/angular';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {AcessoService} from './providers/acesso.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html'
+    selector: 'app-root',
+    templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    private router: NavController,
-    private acessoService: AcessoService
-  ) {
-    this.initializeApp();
-  }
+    constructor(
+        private platform: Platform,
+        private splashScreen: SplashScreen,
+        private statusBar: StatusBar,
+        private router: NavController,
+        private acessoService: AcessoService
+    ) {
+        this.initializeApp();
+    }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+    initializeApp() {
+        this.platform.ready().then(() => {
+            this.statusBar.styleDefault();
 
-      const url = this.acessoService.primeiroAcesso()
-        ? '/primeiro-acesso/slides'
-        : '/login';
+            const url = this.acessoService.primeiroAcesso()
+                ? '/primeiro-acesso/slides'
+                : '/login';
 
-      this.router.navigateRoot(url)
-        .then(() => this.splashScreen.hide());
-    });
-  }
+            this.router.navigateRoot(url)
+                .then(() => this.splashScreen.hide());
+        });
+    }
 }

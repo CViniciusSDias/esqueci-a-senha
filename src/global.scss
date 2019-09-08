@@ -3,7 +3,6 @@
 @import '~@ionic/angular/css/normalize.css';
 @import '~@ionic/angular/css/structure.css';
 @import '~@ionic/angular/css/typography.css';
-
 @import '~@ionic/angular/css/padding.css';
 @import '~@ionic/angular/css/float-elements.css';
 @import '~@ionic/angular/css/text-alignment.css';
@@ -11,9 +10,9 @@
 @import '~@ionic/angular/css/flex-utils.css';
 
 .swiper-wrapper {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 input.searchbar-input.sc-ion-searchbar-md {
-    box-shadow: none;
+  box-shadow: none;
 }

@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { ConnectionFactoryService } from './connection-factory.service';
+import {ConnectionFactoryService} from './connection-factory.service';
 
 describe('ConnectionFactoryService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+    beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
-    const service: ConnectionFactoryService = TestBed.get(ConnectionFactoryService);
-    expect(service).toBeTruthy();
-  });
+    it('should be created', () => {
+        const service: ConnectionFactoryService = TestBed.get(ConnectionFactoryService);
+        expect(service).toBeTruthy();
+    });
 });
