@@ -11,7 +11,7 @@ export class AcessoService {
     }
 
     public incrementarAcessos(qtd: number = 1): number {
-        let usos: any = parseInt(localStorage.getItem('usos'));
+        let usos: any = parseInt(localStorage.getItem('usos'), 10);
         usos = isNaN(usos) ? 0 : usos;
         usos += qtd;
         localStorage.setItem('usos', usos);

@@ -14,9 +14,8 @@ import {finalize} from 'rxjs/operators';
     templateUrl: './login.page.html',
     styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit, OnDestroy {
+export class LoginPage implements OnInit {
     public acesso: Acesso;
-    private backButtonSubscription;
 
     constructor(private acessoService: AcessoService,
                 public navCtrl: NavController,
@@ -36,12 +35,6 @@ export class LoginPage implements OnInit, OnDestroy {
         if (this.platform.is('android') && this.appRate.naoExibiuNessaSessao()) {
             this.appRate.pedirAvaliacao(qtdAcessos);
         }
-
-        this.backButtonSubscription = this.platform.backButton.subscribe(_ => navigator['app'].exitApp());
-    }
-
-    public ngOnDestroy(): void {
-        this.backButtonSubscription.unsubscribe();
     }
 
     public logar(): void {

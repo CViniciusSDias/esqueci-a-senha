@@ -31,7 +31,12 @@
     <ng-container *ngIf="inicializado">
         <ion-list *ngIf="senhas.length; else semSenhas">
             <ion-item *ngFor="let senha of senhas | filtroSenhas:filtroSenhas" (click)="actionSheet(senha)">
-                <ion-icon name="lock" slot="start"></ion-icon>
+                <ion-icon name="lock-open" slot="start" *ngIf="senha.exibida; else aberto"></ion-icon>
+
+                <ng-template #aberto>
+                    <ion-icon name="lock-closed" slot="start" #aberto></ion-icon>
+                </ng-template>
+
                 <div class="dados-senha">
                     <h2>{{senha.ondeUsar}}</h2>
                     <p *ngIf="senha.login !== null">{{senha.login}}</p>
@@ -48,7 +53,7 @@
         <ng-template #semSenhas>
             <ion-grid>
                 <ion-row>
-                    <ion-col text-center>
+                    <ion-col class="ion-text-center">
                         <p><b>Você ainda não tem nenhuma senha cadastrada</b></p>
                         <p>Navegue até a aba "Adicionar" abaixo para criar uma</p>
                     </ion-col>

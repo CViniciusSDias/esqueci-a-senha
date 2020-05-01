@@ -23,7 +23,6 @@ export class SenhasPage implements OnInit, OnDestroy {
     public filtroSenhas = '';
     private navObservable: Subscription;
     private filterObservable = new Subject<string>();
-    private backButtonSubscription: SubscriptionLike;
 
     constructor(private navCtrl: NavController,
                 private senhaDao: SenhaDaoService,
@@ -31,8 +30,7 @@ export class SenhasPage implements OnInit, OnDestroy {
                 private actionSheetCtrl: ActionSheetController,
                 private alertFactory: AlertFactoryService,
                 private clipboard: Clipboard,
-                private router: Router,
-                private platform: Platform
+                private router: Router
     ) {
     }
 
@@ -47,19 +45,11 @@ export class SenhasPage implements OnInit, OnDestroy {
         this.filterObservable
             .pipe(debounceTime(300))
             .subscribe(filtro => this.filtroSenhas = filtro);
-
-        const stream = this.platform.backButton.pipe(debounceTime(300));
-        this.backButtonSubscription = this.platform.backButton
-            .pipe(buffer(stream))
-            .pipe(map(list => list.length))
-            .pipe(filter(count => count === 2))
-            .subscribe(_ => navigator['app'].exitApp());
     }
 
     public ngOnDestroy(): void {
         this.navObservable.unsubscribe();
         this.filterObservable.unsubscribe();
-        this.backButtonSubscription.unsubscribe();
     }
 
     private buscarSenhas(): void {
