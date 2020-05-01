@@ -19,7 +19,7 @@ export class SenhasPage implements OnInit, OnDestroy {
     public senhas: Senha[] = [];
     public inicializado = false;
     public showSearch = false;
-    @ViewChild('busca', {static: false}) public searchBar: IonSearchbar;
+    @ViewChild('busca') public searchBar: IonSearchbar;
     public filtroSenhas = '';
     private navObservable: Subscription;
     private filterObservable = new Subject<string>();
