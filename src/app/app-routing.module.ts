@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
-    {path: 'login', loadChildren: './login/login.module#LoginPageModule'},
-    {path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule'},
-    {path: 'primeiro-acesso', loadChildren: './primeiro-acesso/primeiro-acesso.module#PrimeiroAcessoModule'}
+    {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)},
+    {path: 'tabs', loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)},
+    {path: 'primeiro-acesso', loadChildren: () => import('./primeiro-acesso/primeiro-acesso.module').then(m => m.PrimeiroAcessoModule)}
 ];
 
 @NgModule({
